@@ -11,7 +11,9 @@
     "lint:fix": "eslint --fix --ext .ts,.js src/",
     "format": "prettier --write 'src/**/*.{ts,js,json}'",
     "check-format": "prettier --check 'src/**/*.{ts,js,json}'",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docker-prod": "docker-compose up --build",
+    "docker-stop": "docker-compose down"
   },
   "keywords": [],
   "author": "",

@@ -1,23 +1,25 @@
 FROM node:21.5.0
 
+# Create app directory
 WORKDIR /usr/src/app
 
-RUN npm install -g typescript
+# Install global dependencies
+RUN npm install -g nodemon typescript
 
-RUN npm install -g nodemon
-
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Install app dependencies
 RUN npm install
 
+# Bundle app source
 COPY . .
 
-EXPOSE 8080
-
-#Build to project
+# Build the TypeScript files
 RUN npm run build
 
-ENV NODE_ENV production
+# Expose port 8080
+EXPOSE 8080
 
-# run node server
+# Start the app
 CMD npm run start
