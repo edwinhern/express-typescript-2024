@@ -1,0 +1,30 @@
+name: Build Express.js Application
+
+on:
+  push:
+    branches: [master] # or any branch you want to trigger the action
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [21.5.0] # Set your Node.js version
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install
+      - name: Run build
+        run: npm run build
+      - name: Run lint
+        run: npm run lint
+      - name: Check format
+        run: npm run check-format
