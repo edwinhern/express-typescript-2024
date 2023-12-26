@@ -21,7 +21,7 @@ jobs:
           password: ${{ secrets.GH_Token }}
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag ghcr.io/${{ github.actor }}/${{ github.repository }}:latest
+        run: docker build . --file Dockerfile --tag ghcr.io/${{ github.repository }}:latest
 
       - name: Push the Docker image
-        run: docker push ghcr.io/${{ github.actor }}/${{ github.repository }}:latest
+        run: docker push ghcr.io/${{ github.repository }}:latest
