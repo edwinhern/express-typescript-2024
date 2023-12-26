@@ -1,15 +1,15 @@
-import compression from "compression";
-import cors from "cors";
-import express, { Express } from "express";
-import helmet from "helmet";
-import { pino } from "pino";
-import { pinoHttp } from "pino-http";
+import compression from 'compression';
+import cors from 'cors';
+import express, { Express } from 'express';
+import helmet from 'helmet';
+import { pino } from 'pino';
+import { pinoHttp } from 'pino-http';
 
-import { middlewares } from "./middleware";
-import compressFilter from "./utils/compress-filter";
-import { getCorsOrigin } from "./utils/env";
+import { middlewares } from './middleware';
+import compressFilter from './utils/compress-filter';
+import { getCorsOrigin } from './utils/env';
 
-const logger = pino({ name: "server start" });
+const logger = pino({ name: 'server start' });
 const app: Express = express();
 const cors_origin = getCorsOrigin();
 

@@ -1,6 +1,6 @@
-import { ErrorRequestHandler, RequestHandler } from "express";
+import { ErrorRequestHandler, RequestHandler } from 'express';
 
-import { setCustomProp } from "../request-logger";
+import { setCustomProp } from '../request-logger';
 
 export function errorHandlers() {
   return [unexpectedRequest, addErrorToRequestLog, defaultErrorRequestHandler];
@@ -11,7 +11,7 @@ const unexpectedRequest: RequestHandler = (_req, res) => {
 };
 
 const addErrorToRequestLog: ErrorRequestHandler = (err, _req, res, next) => {
-  setCustomProp(res, "err", err);
+  setCustomProp(res, 'err', err);
   next(err);
 };
 

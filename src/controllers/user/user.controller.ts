@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
-import { User } from "../../models";
-import { IService } from "../../services";
+import { User } from '../../models';
+import { IService } from '../../services';
 
 export class UserController {
   private readonly _service: IService<User>;

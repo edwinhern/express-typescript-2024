@@ -1,7 +1,7 @@
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 
-import { app, logger } from "./server";
-import { getPort } from "./utils/env";
+import { app, logger } from './server';
+import { getPort } from './utils/env';
 
 dotenv.config();
 
@@ -12,13 +12,13 @@ const server = app.listen(port, () => {
 });
 
 const onCloseSignal = () => {
-  logger.info("sigint received, shutting down");
+  logger.info('sigint received, shutting down');
   server.close(() => {
-    logger.info("server closed");
+    logger.info('server closed');
     process.exit();
   });
   setTimeout(() => process.exit(1), 10000).unref(); // Force shutdown after 10s
 };
 
-process.on("SIGINT", onCloseSignal);
-process.on("SIGTERM", onCloseSignal);
+process.on('SIGINT', onCloseSignal);
+process.on('SIGTERM', onCloseSignal);

@@ -1,2 +1,2 @@
-export * from "./interfaces/service.interface";
-export * from "./user/user.service";
+export * from './interfaces/service.interface';
+export * from './user/user.service';

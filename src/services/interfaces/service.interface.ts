@@ -1,4 +1,4 @@
-import { ServiceResponse } from "../../models";
+import { ServiceResponse } from '../../models';
 
 export interface IService<T> {
   findAll(): Promise<ServiceResponse<T[] | null>>;
