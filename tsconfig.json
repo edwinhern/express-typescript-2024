@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "rootDir": "./src",
+    "moduleResolution": "Node",
+    "outDir": "build",
+    "importsNotUsedAsValues": "remove",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "skipLibCheck": true,
+    "ignoreDeprecations": "5.0"
+  },
+  "extends": "@tsconfig/node-lts-strictest-esm/tsconfig.json",
+  "exclude": ["node_modules"],
+  "include": ["src/**/*.ts", "./src/**/*.d.ts"]
+}
