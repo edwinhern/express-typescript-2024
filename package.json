@@ -11,7 +11,6 @@
     "lint:fix": "eslint --fix --ext .ts,.js src/",
     "format": "prettier --write 'src/**/*.{ts,js,json}'",
     "check-format": "prettier --check 'src/**/*.{ts,js,json}'",
-    "prepare": "husky install",
     "docker-prod": "docker-compose up --build",
     "docker-stop": "docker-compose down"
   },
@@ -37,7 +36,6 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.2",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "nodemon": "^3.0.2",
     "prettier": "^3.1.1",

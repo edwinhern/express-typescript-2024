@@ -9,7 +9,5 @@ services:
       - .:/usr/src/app/
     environment:
       - NODE_ENV=production
-    working_dir: /usr/src/app
-    command: sh -c "npm install && npm run start"
     ports:
       - 8080:8080
