@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      IMAGE_TAG: my-image-name:$(date +%s)
 
     steps:
       - uses: actions/checkout@v3
@@ -23,7 +21,7 @@ jobs:
           password: ${{ secrets.GH_Token }}
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag ghcr.io/${{ github.repository }}/${{ env.IMAGE_TAG }}
+        run: docker build . --file Dockerfile --tag ghcr.io/${{ github.actor }}/${{ github.repository }}:latest
 
       - name: Push the Docker image
-        run: docker push ghcr.io/${{ github.repository }}/${{ env.IMAGE_TAG }}
+        run: docker push ghcr.io/${{ github.actor }}/${{ github.repository }}:latest
