@@ -1,8 +1,8 @@
 import request from 'supertest';
 
-import { ServiceResponse } from '../../../../common/models/serviceResponse';
-import { app } from '../../../../server';
-import { User } from '../../userModel';
+import { ServiceResponse } from '../../../common/models/serviceResponse';
+import { app } from '../../../server';
+import { User } from '../userModel';
 
 describe('User API endpoints', () => {
   it('GET /users - success', async () => {
