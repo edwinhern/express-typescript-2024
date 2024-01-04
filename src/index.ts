@@ -1,9 +1,5 @@
-import dotenv from 'dotenv';
-
-import { getPort } from './common/utils/envUtils';
+import { getPort } from './common/utils/envConfig';
 import { app, logger } from './server';
-
-dotenv.config();
 
 const port = getPort();
 
