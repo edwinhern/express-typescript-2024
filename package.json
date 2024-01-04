@@ -4,9 +4,9 @@
   "description": "An Express.js boilerplate backend",
   "main": "index.ts",
   "scripts": {
-    "dev": "tsx watch --clear-screen=false -r dotenv/config src/index.ts",
+    "dev": "tsx watch --clear-screen=false src/index.ts",
     "build": "rimraf build && tsc",
-    "start": "npm run build && NODE_ENV=production tsx -r dotenv/config build/index.js",
+    "start": "npm run build && NODE_ENV=production tsx build/index.js",
     "lint": "eslint 'src/**/*.{ts,js}'",
     "lint:fix": "eslint --fix --ext .ts,.js src/",
     "format": "prettier --write 'src/**/*.{ts,js,json}'",
@@ -57,5 +57,22 @@
       "npx prettier --write",
       "npx eslint --fix"
     ]
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[tj]s?(x)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "clearMocks": true,
+    "collectCoverage": true,
+    "coverageDirectory": "coverage"
   }
 }

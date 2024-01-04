@@ -1,16 +1,21 @@
-import { ServiceResponse, User } from '../../models';
-import { IRepository } from '../../repositories';
+import { ServiceResponse } from '../../common/models/serviceResponse';
 import { logger } from '../../server';
-import { IService } from '../interfaces/service.interface';
+import { User } from './userModel';
+import { IUserRepository } from './userRepository';
 
-export class UserService implements IService<User> {
-  private readonly _repository: IRepository<User>;
+export interface IUserService {
+  findAll(): Promise<ServiceResponse<User[] | null>>;
+  findById(id: number): Promise<ServiceResponse<User | null>>;
+}
 
-  constructor(repository: IRepository<User>) {
+export class UserService implements IUserService {
+  private readonly _repository: IUserRepository;
+
+  constructor(repository: IUserRepository) {
     this._repository = repository;
   }
 
-  public async findAll(): Promise<ServiceResponse<User[]>> {
+  public async findAll() {
     try {
       const users = await this._repository.findAllAsync();
       return new ServiceResponse<User[]>(true, 'Users found.', users);
@@ -20,7 +25,7 @@ export class UserService implements IService<User> {
     }
   }
 
-  public async findById(id: number): Promise<ServiceResponse<User>> {
+  public async findById(id: number) {
     try {
       const user = await this._repository.findByIdAsync(id);
       if (!user) return new ServiceResponse<User>(false, 'User not found.', null);
