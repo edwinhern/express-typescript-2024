@@ -1,6 +1,7 @@
 import request from 'supertest';
 
-import { ServiceResponse, User } from '../../src/models';
+import { ServiceResponse } from '../../src/common/models/serviceResponse';
+import { User } from '../../src/modules/user/userModel';
 import { app } from '../../src/server';
 
 describe('User API endpoints', () => {
