@@ -1,8 +1,8 @@
-name: Build Express.js Application
+name: Build Express+Typescript Application
 
 on:
   push:
-    branches: [master] # or any branch you want to trigger the action
+    branches: [master]
   pull_request:
     branches: [master]
 
@@ -10,21 +10,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [21.5.0] # Set your Node.js version
-
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+
+      - name: Read .nvmrc
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
+
       - name: Install dependencies
         run: npm install
+
       - name: Run build
         run: npm run build
+
       - name: Run lint
         run: npm run lint
+
       - name: Check format
         run: npm run check-format
