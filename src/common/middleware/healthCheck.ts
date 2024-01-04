@@ -1,10 +1,10 @@
 import express from 'express';
 
-import {
-  HealthCheckGetAllRequestBody,
-  HealthCheckGetAllRequestParams,
-  HealthCheckGetAllResponseBody,
-} from './api-health-check';
+type HealthCheckGetAllRequestParams = Record<string, never>;
+type HealthCheckGetAllRequestBody = Record<string, never>;
+type HealthCheckGetAllResponseBody = {
+  message: string;
+};
 
 export function create() {
   const router = express.Router();

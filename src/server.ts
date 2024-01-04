@@ -5,9 +5,9 @@ import helmet from 'helmet';
 import { pino } from 'pino';
 import { pinoHttp } from 'pino-http';
 
-import { middlewares } from './middleware';
-import compressFilter from './utils/compress-filter';
-import { getCorsOrigin } from './utils/env';
+import { middlewares } from './common/middleware';
+import compressFilter from './common/utils/compressFilter';
+import { getCorsOrigin } from './common/utils/envUtils';
 
 const logger = pino({ name: 'server start' });
 const app: Express = express();

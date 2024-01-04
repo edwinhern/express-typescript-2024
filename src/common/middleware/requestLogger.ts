@@ -3,7 +3,7 @@ import { RequestHandler, Response } from 'express';
 import type { ClientRequest, IncomingMessage } from 'http';
 import { Options, pinoHttp } from 'pino-http';
 
-import { getNodeEnv } from '../../utils/env';
+import { getNodeEnv } from '../utils/envUtils';
 
 type PinoCustomProps = {
   err: Error;

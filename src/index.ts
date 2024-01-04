@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 
+import { getPort } from './common/utils/envUtils';
 import { app, logger } from './server';
-import { getPort } from './utils/env';
 
 dotenv.config();
 
