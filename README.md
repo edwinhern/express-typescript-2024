@@ -2,7 +2,7 @@
 
 [![Docker Image CI](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml)
 [![CodeQL](https://github.com/edwinhern/express-typescript-2024/actions/workflows/codeql.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/codeql.yml)
-[![Build Express.js Application](https://github.com/edwinhern/express-typescript-2024/actions/workflows/node-js.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/node-js.yml)
+[![Build Express+Typescript Application](https://github.com/edwinhern/express-typescript-2024/actions/workflows/test.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/test.yml)
 
 ## Steps to use Typescript With Node + Execute the project
 
