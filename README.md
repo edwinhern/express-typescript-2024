@@ -26,3 +26,34 @@ Below are Scripts that can be ran and found in package.json file
 - Development Mode: `"dev": "tsx watch --clear-screen=false -r dotenv/config src/index.ts",`
 - Build Project: `"build": "rimraf build && tsc"`
 - Production Mode: `"start": "npm run build && NODE_ENV=production tsx -r dotenv/config build/index.js",`
+
+## Source Folder Structure 
+```
+.
+├── common
+│   ├── middleware
+│   │   ├── errorHandler.ts
+│   │   ├── healthCheck.ts
+│   │   ├── index.ts
+│   │   ├── requestLogger.ts
+│   │   └── responseHandler.ts
+│   ├── models
+│   │   └── serviceResponse.ts
+│   └── utils
+│       ├── compressFilter.ts
+│       └── envConfig.ts
+├── index.ts
+├── modules
+│   └── user
+│       ├── tests
+│       │   └── integration
+│       │       └── userRoutes.test.ts
+│       ├── userController.ts
+│       ├── userModel.ts
+│       ├── userRepository.ts
+│       ├── userRoutes.ts
+│       └── userService.ts
+└── server.ts
+
+9 directories, 16 files
+```
