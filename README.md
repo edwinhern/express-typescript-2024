@@ -46,8 +46,7 @@ Below are Scripts that can be ran and found in package.json file
 ├── modules
 │   └── user
 │       ├── tests
-│       │   └── integration
-│       │       └── userRoutes.test.ts
+│       │   └── userRoutes.test.ts
 │       ├── userController.ts
 │       ├── userModel.ts
 │       ├── userRepository.ts
@@ -55,5 +54,5 @@ Below are Scripts that can be ran and found in package.json file
 │       └── userService.ts
 └── server.ts
 
-9 directories, 16 files
+8 directories, 16 files
 ```
