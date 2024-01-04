@@ -9,7 +9,7 @@
 ### Step 1: Install TypeScript
 
 - Run `sudo npm i -g typescript` to install typescript globally.
-- Check typescripe version by running `tsc --version` to make sure you installed it correctly.
+- Check typescript version by running `tsc --version` to make sure you installed it correctly.
 
 ### Step 2: Initialize Project
 
@@ -23,6 +23,6 @@
 
 Below are Scripts that can be ran and found in package.json file
 
-- Development Mode: `"dev": "nodemon"`
+- Development Mode: `"dev": "tsx watch --clear-screen=false -r dotenv/config src/index.ts",`
 - Build Project: `"build": "rimraf build && tsc"`
-- Production Mode: `"start": "npm run build && NODE_ENV=production node -r dotenv/config build/index.js"`
+- Production Mode: `"start": "npm run build && NODE_ENV=production tsx -r dotenv/config build/index.js",`
