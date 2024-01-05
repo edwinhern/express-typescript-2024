@@ -1,4 +1,4 @@
-FROM node:21.5.0
+FROM node:current-slim
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install global and app dependencies
-RUN npm install -g nodemon typescript
+RUN npm install -g typescript tsx
 RUN npm install
 
 # Bundle app source

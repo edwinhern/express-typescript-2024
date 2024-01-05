@@ -13,7 +13,8 @@
     "check-format": "prettier --check 'src/**/*.{ts,js,json}'",
     "test": "jest",
     "prepare": "husky install",
-    "docker-prod": "docker-compose up --build",
+    "docker-build": "docker-compose build --no-cache",
+    "docker-start": "docker-compose up",
     "docker-stop": "docker-compose down"
   },
   "keywords": [],
@@ -57,22 +58,5 @@
       "npx prettier --write",
       "npx eslint --fix"
     ]
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "testMatch": [
-      "**/__tests__/**/*.[jt]s?(x)",
-      "**/?(*.)+(spec|test).[tj]s?(x)"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "clearMocks": true,
-    "collectCoverage": true,
-    "coverageDirectory": "coverage"
   }
 }
