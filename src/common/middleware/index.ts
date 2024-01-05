@@ -1,9 +1,9 @@
 import express, { Router } from 'express';
 
-import { errorHandlers } from '~/common/middleware/errorHandler';
-import { create as healthCheckRoutes } from '~/common/middleware/healthCheck';
-import { requestLogger } from '~/common/middleware/requestLogger';
-import { usersRouter } from '~/modules/user/userRoutes';
+import { errorHandlers } from '@common/middleware/errorHandler';
+import { create as healthCheckRoutes } from '@common/middleware/healthCheck';
+import { requestLogger } from '@common/middleware/requestLogger';
+import { usersRouter } from '@modules/user/userRoutes';
 
 export function middlewares() {
   const router: Router = express.Router();

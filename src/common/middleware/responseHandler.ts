@@ -1,6 +1,6 @@
 import { Response } from 'express';
 
-import { ServiceResponse } from '~/common/models/serviceResponse';
+import { ServiceResponse } from '@common/models/serviceResponse';
 
 export const handleServiceResponse = (serviceResponse: ServiceResponse<any>, response: Response) => {
   if (!serviceResponse.success) {

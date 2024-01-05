@@ -58,22 +58,5 @@
       "npx prettier --write",
       "npx eslint --fix"
     ]
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "testMatch": [
-      "**/__tests__/**/*.[jt]s?(x)",
-      "**/?(*.)+(spec|test).[tj]s?(x)"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "clearMocks": true,
-    "collectCoverage": true,
-    "coverageDirectory": "coverage"
   }
 }
