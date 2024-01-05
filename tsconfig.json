@@ -3,6 +3,11 @@
     "target": "ES6",
     "module": "CommonJS",
     "rootDir": "./src",
+    "paths": {
+      "~/modules/*": ["./src/modules/*"],
+      "~/common/*": ["./src/common/*"],
+      "~/root/*": ["./src/*"]
+    },
     "moduleResolution": "Node",
     "outDir": "build",
     "importsNotUsedAsValues": "remove",

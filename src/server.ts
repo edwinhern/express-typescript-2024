@@ -7,9 +7,9 @@ import path from 'path';
 import { pino } from 'pino';
 import { pinoHttp } from 'pino-http';
 
-import { middlewares } from './common/middleware';
-import compressFilter from './common/utils/compressFilter';
-import { getCorsOrigin } from './common/utils/envConfig';
+import { middlewares } from '~/common/middleware';
+import compressFilter from '~/common/utils/compressFilter';
+import { getCorsOrigin } from '~/common/utils/envConfig';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),

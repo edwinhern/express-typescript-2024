@@ -1,5 +1,5 @@
-import { getPort } from './common/utils/envConfig';
-import { app, logger } from './server';
+import { getPort } from '~/common/utils/envConfig';
+import { app, logger } from '~/root/server';
 
 const port = getPort();
 

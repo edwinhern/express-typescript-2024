@@ -1,4 +1,4 @@
-import { User } from './userModel';
+import { User } from '~/modules/user/userModel';
 
 export interface IUserRepository {
   findAllAsync(): Promise<User[]>;

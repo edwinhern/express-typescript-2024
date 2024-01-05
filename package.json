@@ -13,7 +13,8 @@
     "check-format": "prettier --check 'src/**/*.{ts,js,json}'",
     "test": "jest",
     "prepare": "husky install",
-    "docker-prod": "docker-compose up --build",
+    "docker-build": "docker-compose build --no-cache",
+    "docker-start": "docker-compose up",
     "docker-stop": "docker-compose down"
   },
   "keywords": [],
