@@ -1,13 +1,12 @@
-version: "3"
+version: '3.9'
 services:
-  express-typescript:
+  backend-app:
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: "app-express-typescript"
-    volumes:
-      - .:/usr/src/app/
-    environment:
-      - NODE_ENV=production
+      dockerfile: local.Dockerfile
+    command: '/app/scripts/docker/local-run.sh'
     ports:
-      - 8080:8080
+      - '8080:8080'
+    env_file: .env
+    volumes:
+      - './src:/app/src'
