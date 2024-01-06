@@ -7,7 +7,7 @@
     "paths": {
       "@modules/*": ["./src/modules/*"],
       "@common/*": ["./src/common/*"],
-      "@root/*": ["./src/*"]
+      "@src/*": ["./src/*"]
     },
     "moduleResolution": "Node",
     "outDir": "build",

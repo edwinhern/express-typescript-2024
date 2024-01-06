@@ -1,7 +1,7 @@
 import { ServiceResponse } from '@common/models/serviceResponse';
 import { User } from '@modules/user/userModel';
 import { IUserRepository } from '@modules/user/userRepository';
-import { logger } from '@root/server';
+import { logger } from '@src/server';
 
 export interface IUserService {
   findAll(): Promise<ServiceResponse<User[] | null>>;
