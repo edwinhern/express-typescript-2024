@@ -32,7 +32,7 @@
           ["^"], // <-- to match regular imports (not starting with a special character)
 
           // Your internal path aliases
-          ["^(@modules|@common|@root)(/.*|$)"],
+          ["^(@modules|@common|@src)(/.*|$)"],
 
           // Relative imports
           ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
