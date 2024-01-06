@@ -11,6 +11,7 @@
     "lint:fix": "eslint --fix --ext .ts,.js src/",
     "format": "prettier --write 'src/**/*.{ts,js,json}'",
     "check-format": "prettier --check 'src/**/*.{ts,js,json}'",
+    "ts:check": "tsc --noEmit",
     "test": "jest",
     "prepare": "husky install",
     "docker:build": "docker-compose build --no-cache",
@@ -51,10 +52,14 @@
     "typescript": "^5.3.3"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "npx prettier --write",
-      "npx eslint --fix"
-    ]
+    "**/*.{ts,js}": [
+      "npm run ts:check",
+      "npm run lint:fix",
+      "npm run format",
+      "npm run lint",
+      "git add"
+    ],
+    "**/*.{ts,js,json,css,md}": "npm run format"
   },
   "author": "Edwin Hernandez",
   "repository": "edwinhern/express-typescript-2024",
