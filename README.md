@@ -11,9 +11,14 @@
 - Open your terminal
 - Clone the repo `git clone https://github.com/edwinhern/express-typescript-2024.git`
 - Navigate by using `cd express-typescript-2024` into the folder directory
-- Install project dependencies by running `npm ci`.
+- Install project dependencies by running `npm ci`
 
-### Step 2: Available Scripts
+### Step 2: Set Up Environment Variables
+- Copy the .env.template file to a new file named .env
+- You can use the following command: `cp .env.template .env`
+- Ensure that the .env file contains the required environment variables as defined in .env.template
+
+### Step 3: Available Scripts
 
 Below are Scripts that can be ran and found in package.json file
 
