@@ -16,10 +16,10 @@ dotenv.config({
 
 const logger = pino({ name: 'server start' });
 const app: Express = express();
-const cors_origin = getCorsOrigin();
+const corsOrigin = getCorsOrigin();
 
 // Setup Middlewares
-app.use(cors({ origin: [cors_origin], credentials: true }));
+app.use(cors({ origin: [corsOrigin], credentials: true }));
 app.use(helmet());
 app.use(compression({ filter: compressFilter }));
 app.use(middlewares());
