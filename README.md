@@ -14,6 +14,7 @@
 - Install project dependencies by running `npm ci`
 
 ### Step 2: Set Up Environment Variables
+
 - Copy the .env.template file to a new file named .env
 - You can use the following command: `cp .env.template .env`
 - Ensure that the .env file contains the required environment variables as defined in .env.template
@@ -33,7 +34,6 @@ Below are Scripts that can be ran and found in package.json file
 ├── common
 │   ├── middleware
 │   │   ├── errorHandler.ts
-│   │   ├── healthCheck.ts
 │   │   ├── index.ts
 │   │   ├── requestLogger.ts
 │   │   └── responseHandler.ts
@@ -44,6 +44,11 @@ Below are Scripts that can be ran and found in package.json file
 │       └── envConfig.ts
 ├── index.ts
 ├── modules
+│   ├── healthCheck
+│   │   ├── healthCheckController.ts
+│   │   ├── healthCheckRoutes.ts
+│   │   └── tests
+│   │       └── healthCheckRoutes.test.ts
 │   └── user
 │       ├── tests
 │       │   └── userRoutes.test.ts
@@ -54,5 +59,5 @@ Below are Scripts that can be ran and found in package.json file
 │       └── userService.ts
 └── server.ts
 
-8 directories, 16 files
+10 directories, 18 file
 ```
