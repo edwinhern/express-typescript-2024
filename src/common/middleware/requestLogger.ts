@@ -16,6 +16,7 @@ type PinoCustomProps = {
 export const requestLogger = (options?: Options): RequestHandler[] => {
   const pinoOptions: Options = {
     customProps: customProps as unknown as Options['customProps'],
+    redact: ['request.headers', 'response.headers'],
     genReqId,
     customLogLevel,
     customSuccessMessage,
