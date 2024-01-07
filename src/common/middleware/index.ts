@@ -8,14 +8,14 @@ import { usersRouter } from '@modules/user/userRoutes';
 export function middlewares() {
   const router: Router = express.Router();
 
+  // Request logging
+  router.use(requestLogger());
+
   // HealthCheck endpoint - expose before auth
   router.use('/health-check', healthCheckRoutes());
 
   // Application routes
   router.use('/users', usersRouter);
-
-  // Request logging
-  router.use(requestLogger());
 
   // Error handlers
   router.use(errorHandlers());
