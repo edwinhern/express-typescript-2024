@@ -1,7 +1,5 @@
 import { ErrorRequestHandler, RequestHandler } from 'express';
 
-import { setCustomProp } from '@common/middleware/requestLogger';
-
 export function errorHandlers() {
   return [unexpectedRequest, addErrorToRequestLog, defaultErrorRequestHandler];
 }
@@ -11,7 +9,7 @@ const unexpectedRequest: RequestHandler = (_req, res) => {
 };
 
 const addErrorToRequestLog: ErrorRequestHandler = (err, _req, res, next) => {
-  setCustomProp(res, 'err', err);
+  res.locals.err = err;
   next(err);
 };
 
