@@ -13,7 +13,7 @@ type PinoCustomProps = {
   responseBody: unknown;
 };
 
-export const requestLogger = (options?: Options): RequestHandler[] => {
+const requestLogger = (options?: Options): RequestHandler[] => {
   const pinoOptions: Options = {
     customProps: customProps as unknown as Options['customProps'],
     redact: ['request.headers', 'response.headers'],
@@ -74,3 +74,5 @@ const genReqId = (req: IncomingMessage, res: ServerResponse<IncomingMessage>) =>
   res.setHeader('X-Request-Id', id);
   return id;
 };
+
+export default requestLogger;

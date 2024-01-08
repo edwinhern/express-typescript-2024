@@ -1,9 +1,5 @@
 import { ErrorRequestHandler, RequestHandler } from 'express';
 
-export function errorHandlers() {
-  return [unexpectedRequest, addErrorToRequestLog, defaultErrorRequestHandler];
-}
-
 const unexpectedRequest: RequestHandler = (_req, res) => {
   res.sendStatus(404);
 };
@@ -16,3 +12,5 @@ const addErrorToRequestLog: ErrorRequestHandler = (err, _req, res, next) => {
 const defaultErrorRequestHandler: ErrorRequestHandler = (_err, _req, res) => {
   res.sendStatus(500);
 };
+
+export default () => [unexpectedRequest, addErrorToRequestLog, defaultErrorRequestHandler];

@@ -33,6 +33,7 @@ Below are Scripts that can be ran and found in package.json file
 .
 ├── common
 │   ├── middleware
+│   │   ├── compressFilter.ts
 │   │   ├── errorHandler.ts
 │   │   ├── index.ts
 │   │   ├── rateLimiter.ts

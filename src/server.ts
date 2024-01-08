@@ -6,10 +6,10 @@ import helmet from 'helmet';
 import path from 'path';
 import { pino } from 'pino';
 
-import { middlewares } from '@common/middleware';
-import rateLimiter from '@common/middleware/rateLimiter';
-import compressFilter from '@common/utils/compressFilter';
+import { compressFilter, errorHandler, rateLimiter, requestLogger } from '@common/middleware';
 import { getCorsOrigin } from '@common/utils/envConfig';
+import { healthCheckRouter } from '@modules/healthCheck/healthCheckRoutes';
+import { usersRouter } from '@modules/user/userRoutes';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -19,11 +19,20 @@ const logger = pino({ name: 'server start' });
 const app: Express = express();
 const corsOrigin = getCorsOrigin();
 
-// Setup Middlewares
+// Middlewares
 app.use(cors({ origin: [corsOrigin], credentials: true }));
 app.use(helmet());
 app.use(compression({ filter: compressFilter }));
 app.use(rateLimiter);
-app.use(middlewares());
+
+// Request logging
+app.use(requestLogger());
+
+// Routes
+app.use('/health-check', healthCheckRouter);
+app.use('/users', usersRouter);
+
+// Error handlers
+app.use(errorHandler());
 
 export { app, logger };
