@@ -35,13 +35,14 @@ Below are Scripts that can be ran and found in package.json file
 │   ├── middleware
 │   │   ├── errorHandler.ts
 │   │   ├── index.ts
-│   │   ├── requestLogger.ts
-│   │   └── responseHandler.ts
+│   │   ├── rateLimiter.ts
+│   │   └── requestLogger.ts
 │   ├── models
 │   │   └── serviceResponse.ts
 │   └── utils
 │       ├── compressFilter.ts
-│       └── envConfig.ts
+│       ├── envConfig.ts
+│       └── responseHandler.ts
 ├── index.ts
 ├── modules
 │   ├── healthCheck
@@ -59,5 +60,5 @@ Below are Scripts that can be ran and found in package.json file
 │       └── userService.ts
 └── server.ts
 
-10 directories, 18 file
+10 directories, 19 files
 ```
