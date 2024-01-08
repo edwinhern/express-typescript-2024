@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
-import { handleServiceResponse } from '@common/middleware/responseHandler';
 import { ServiceResponse } from '@common/models/serviceResponse';
+import { handleServiceResponse } from '@common/utils/responseHandler';
 
 export interface IHealthCheckController {
   status(_: Request, response: Response): void;

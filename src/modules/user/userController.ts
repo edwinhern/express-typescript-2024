@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { handleServiceResponse } from '@common/middleware/responseHandler';
+import { handleServiceResponse } from '@common/utils/responseHandler';
 import { IUserService } from '@modules/user/userService';
 
 export class UserController {

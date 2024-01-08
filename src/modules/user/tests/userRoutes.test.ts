@@ -7,7 +7,7 @@ import { app } from '@src/server';
 describe('User API endpoints', () => {
   it('GET /users - success', async () => {
     const response = await request(app).get('/users');
-    const result: ServiceResponse<User[]> = response.body as ServiceResponse<User[]>;
+    const result: ServiceResponse<User[]> = response.body;
 
     expect(response.statusCode).toEqual(200);
     expect(result.success).toBeTruthy();
@@ -21,7 +21,7 @@ describe('User API endpoints', () => {
 
   it('GET /users/:id - success', async () => {
     const response = await request(app).get('/users/1');
-    const result: ServiceResponse<User> = response.body as ServiceResponse<User>;
+    const result: ServiceResponse<User> = response.body;
 
     expect(response.statusCode).toEqual(200);
     expect(result.success).toBeTruthy();

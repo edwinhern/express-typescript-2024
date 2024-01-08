@@ -7,6 +7,7 @@ import path from 'path';
 import { pino } from 'pino';
 
 import { middlewares } from '@common/middleware';
+import rateLimiter from '@common/middleware/rateLimiter';
 import compressFilter from '@common/utils/compressFilter';
 import { getCorsOrigin } from '@common/utils/envConfig';
 
@@ -22,6 +23,7 @@ const corsOrigin = getCorsOrigin();
 app.use(cors({ origin: [corsOrigin], credentials: true }));
 app.use(helmet());
 app.use(compression({ filter: compressFilter }));
+app.use(rateLimiter);
 app.use(middlewares());
 
 export { app, logger };
