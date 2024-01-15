@@ -6,7 +6,10 @@ import helmet from 'helmet';
 import path from 'path';
 import { pino } from 'pino';
 
-import { compressFilter, errorHandler, rateLimiter, requestLogger } from '@common/middleware';
+import compressFilter from '@common/middleware/compressFilter';
+import errorHandler from '@common/middleware/errorHandler';
+import rateLimiter from '@common/middleware/rateLimiter';
+import requestLogger from '@common/middleware/requestLogger';
 import { getCorsOrigin } from '@common/utils/envConfig';
 import { healthCheckRouter } from '@modules/healthCheck/healthCheckRoutes';
 import { usersRouter } from '@modules/user/userRoutes';
