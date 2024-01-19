@@ -4,7 +4,7 @@
 [![CodeQL](https://github.com/edwinhern/express-typescript-2024/actions/workflows/codeql.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/codeql.yml)
 [![Build Express+Typescript Application](https://github.com/edwinhern/express-typescript-2024/actions/workflows/test.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/test.yml)
 
-## Steps to use Typescript With Node + Execute the project
+## Steps to use Typescript With TSX + Execute the project
 
 ### Step 1: Initialize Project
 
