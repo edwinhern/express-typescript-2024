@@ -12,7 +12,7 @@ import rateLimiter from '@common/middleware/rateLimiter';
 import requestLogger from '@common/middleware/requestLogger';
 import { getCorsOrigin } from '@common/utils/envConfig';
 import { healthCheckRouter } from '@modules/healthCheck/healthCheckRoutes';
-import { usersRouter } from '@modules/user/userRoutes';
+import { userRouter } from '@modules/user/userRoutes';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -33,7 +33,7 @@ app.use(requestLogger());
 
 // Routes
 app.use('/health-check', healthCheckRouter);
-app.use('/users', usersRouter);
+app.use('/users', userRouter);
 
 // Error handlers
 app.use(errorHandler());

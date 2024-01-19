@@ -1,15 +1,21 @@
-import express, { Router } from 'express';
+import express, { Request, Response, Router } from 'express';
 
-import { UserController } from '@modules/user/userController';
-import { IUserRepository, UserRepository } from '@modules/user/userRepository';
-import { IUserService, UserService } from '@modules/user/userService';
+import { handleServiceResponse } from '@common/utils/responseHandler';
+import { userService } from '@modules/user/userService';
 
-const router: Router = express.Router();
-const userRepository: IUserRepository = new UserRepository();
-const userService: IUserService = new UserService(userRepository);
-const controller: UserController = new UserController(userService);
+export const userRouter: Router = (() => {
+  const router = express.Router();
 
-router.get('/', controller.getAllUsers);
-router.get('/:id', controller.getUserById);
+  router.get('/', async (_req: Request, res: Response) => {
+    const serviceResponse = await userService.findAll();
+    handleServiceResponse(serviceResponse, res);
+  });
 
-export const usersRouter: Router = router;
+  router.get('/:id', async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id as string, 10);
+    const serviceResponse = await userService.findById(id);
+    handleServiceResponse(serviceResponse, res);
+  });
+
+  return router;
+})();
