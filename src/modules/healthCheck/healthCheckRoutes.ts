@@ -1,10 +1,15 @@
-import express, { Router } from 'express';
+import express, { Request, Response, Router } from 'express';
 
-import { HealthCheckController } from './healthCheckController';
+import { ServiceResponse } from '@common/models/serviceResponse';
+import { handleServiceResponse } from '@common/utils/responseHandler';
 
-const router: Router = express.Router();
-const controller: HealthCheckController = new HealthCheckController();
+export const healthCheckRouter: Router = (() => {
+  const router = express.Router();
 
-router.get('/', controller.status);
+  router.get('/', (_req: Request, res: Response) => {
+    const serviceResponse = new ServiceResponse(true, 'Service is healthy.', null);
+    handleServiceResponse(serviceResponse, res);
+  });
 
-export const healthCheckRouter: Router = router;
+  return router;
+})();
