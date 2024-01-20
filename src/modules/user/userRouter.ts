@@ -1,7 +1,7 @@
 import express, { Request, Response, Router } from 'express';
 
 import { handleServiceResponse, validateRequest } from '@common/utils/httpHandlers';
-import { userService } from '@modules/user/userService';
+import * as userService from '@modules/user/userService';
 
 import { GetUserSchema } from './userModel';
 

@@ -1,8 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
 
 import { User } from '@modules/user/userModel';
-import { userRepository } from '@modules/user/userRepository';
-import { userService } from '@modules/user/userService';
+import * as userRepository from '@modules/user/userRepository';
+import * as userService from '@modules/user/userService';
 
 jest.mock('@modules/user/userRepository');
 

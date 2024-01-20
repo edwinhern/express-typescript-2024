@@ -5,12 +5,10 @@ export const users: User[] = [
   { id: 2, name: 'Bob', email: 'bob@example.com', age: 21, createdAt: new Date(), updatedAt: new Date() },
 ];
 
-export const userRepository = {
-  findAllAsync: async (): Promise<User[]> => {
-    return users;
-  },
+export async function findAllAsync(): Promise<User[]> {
+  return users;
+}
 
-  findByIdAsync: async (id: number): Promise<User | null> => {
-    return users.find((user) => user.id === id) || null;
-  },
-};
+export async function findByIdAsync(id: number): Promise<User | null> {
+  return users.find((user) => user.id === id) || null;
+}
