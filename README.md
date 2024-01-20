@@ -56,29 +56,28 @@ Developed to streamline backend development, this boilerplate is your solution f
 
 .
 ├── common
-│ ├── middleware
-│ │ ├── errorHandler.ts
-│ │ ├── rateLimiter.ts
-│ │ └── requestLogger.ts
-│ ├── models
-│ │ └── serviceResponse.ts
-│ └── utils
-│ ├── commonValidation.ts
-│ ├── envConfig.ts
-│ └── httpHandlers.ts
+│   ├── middleware
+│   │   ├── errorHandler.ts
+│   │   ├── rateLimiter.ts
+│   │   └── requestLogger.ts
+│   ├── models
+│   │   └── serviceResponse.ts
+│   └── utils
+│       ├── commonValidation.ts
+│       ├── envConfig.ts
+│       └── httpHandlers.ts
 ├── index.ts
 ├── modules
-│ ├── healthCheck
-│ │ └── healthCheckRouter.ts
-│ └── user
-│ ├── userModel.ts
-│ ├── userRepository.ts
-│ ├── userRouter.ts
-│ └── userService.ts
+│   ├── healthCheck
+│   │   └── healthCheckRouter.ts
+│   └── user
+│       ├── userModel.ts
+│       ├── userRepository.ts
+│       ├── userRouter.ts
+│       └── userService.ts
 └── server.ts
 
 8 directories, 14 files
-
 ```
 
 ## 🤝 Feedback and Contributions
@@ -86,4 +85,3 @@ Developed to streamline backend development, this boilerplate is your solution f
 We'd love to hear your feedback and suggestions for further improvements. Feel free to contribute and join us in making backend development cleaner and faster!
 
 🎉 Happy coding!
-```

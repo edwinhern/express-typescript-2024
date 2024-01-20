@@ -54,11 +54,10 @@
     "typescript": "^5.3.3"
   },
   "lint-staged": {
-    "**/*.{ts,js}": [
+    "**/*.{ts,js,json}": [
       "npm run lint",
       "npm run format"
-    ],
-    "**/*.{ts,js,json,css,md}": "npm run format"
+    ]
   },
   "author": "Edwin Hernandez",
   "repository": "edwinhern/express-typescript-2024",
