@@ -53,7 +53,7 @@ Developed to streamline backend development, this boilerplate is your solution f
 - Production Mode: `npm run start` or `npm run docker:start`
 
 ## 📁 Project Structure
-
+```
 .
 ├── common
 │   ├── middleware
@@ -78,7 +78,6 @@ Developed to streamline backend development, this boilerplate is your solution f
 └── server.ts
 
 8 directories, 14 files
-
 ```
 
 ## 🤝 Feedback and Contributions
