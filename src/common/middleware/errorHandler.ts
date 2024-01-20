@@ -1,7 +1,8 @@
 import { ErrorRequestHandler, RequestHandler } from 'express';
+import { StatusCodes } from 'http-status-codes';
 
 const unexpectedRequest: RequestHandler = (_req, res) => {
-  res.sendStatus(404);
+  res.sendStatus(StatusCodes.NOT_FOUND);
 };
 
 const addErrorToRequestLog: ErrorRequestHandler = (err, _req, res, next) => {
@@ -10,7 +11,7 @@ const addErrorToRequestLog: ErrorRequestHandler = (err, _req, res, next) => {
 };
 
 const defaultErrorRequestHandler: ErrorRequestHandler = (_err, _req, res) => {
-  res.sendStatus(500);
+  res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
 };
 
 export default () => [unexpectedRequest, addErrorToRequestLog, defaultErrorRequestHandler];

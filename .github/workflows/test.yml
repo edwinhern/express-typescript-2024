@@ -22,7 +22,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run build
         run: npm run build
@@ -31,4 +31,4 @@ jobs:
         run: npm run lint
 
       - name: Check format
-        run: npm run check-format
+        run: npm run format
