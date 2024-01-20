@@ -46,7 +46,7 @@ describe('User API Endpoints', () => {
 
       // Act
       const response = await request(app).get(`/users/${testId}`);
-      const responseBody: ServiceResponse<User> = response.body;
+      const responseBody: ServiceResponse = response.body;
 
       // Assert
       expect(response.statusCode).toEqual(StatusCodes.NOT_FOUND);
@@ -59,7 +59,7 @@ describe('User API Endpoints', () => {
       // Act
       const invalidInput = 'abc';
       const response = await request(app).get(`/users/${invalidInput}`);
-      const responseBody: ServiceResponse<User> = response.body;
+      const responseBody: ServiceResponse = response.body;
 
       // Assert
       expect(response.statusCode).toEqual(StatusCodes.BAD_REQUEST);
