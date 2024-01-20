@@ -2,7 +2,7 @@ import { getEnvVar } from '@common/utils/envConfig';
 
 describe('Environment Configuration', () => {
   afterEach(() => {
-    jest.resetModules(); // Clears any cache between tests
+    jest.resetModules();
   });
 
   it('should correctly get a string environment variable', () => {
@@ -24,6 +24,4 @@ describe('Environment Configuration', () => {
     process.env.TEST_VAR = 'invalid';
     expect(() => getEnvVar('TEST_VAR', 'number')).toThrow();
   });
-
-  // Additional tests for getPort, getNodeEnv, getCorsOrigin...
 });
