@@ -11,6 +11,6 @@ describe('Health Check API endpoints', () => {
     expect(response.statusCode).toEqual(200);
     expect(result.success).toBeTruthy();
     expect(result.responseObject).toBeNull();
-    expect(result.message).toEqual('Service is healthy.');
+    expect(result.message).toEqual('Service is healthy');
   });
 });

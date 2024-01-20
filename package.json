@@ -27,7 +27,10 @@
     "express": "^4.18.2",
     "express-rate-limit": "^7.1.5",
     "helmet": "^7.1.0",
-    "pino-http": "^9.0.0"
+    "http-status-codes": "^2.3.0",
+    "lodash": "^4.17.21",
+    "pino-http": "^9.0.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@tsconfig/node-lts-strictest-esm": "^18.12.1",
@@ -36,6 +39,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.11",
+    "@types/lodash": "^4.14.202",
     "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
     "@typescript-eslint/parser": "^6.18.1",
