@@ -9,8 +9,8 @@ import errorHandler from '@common/middleware/errorHandler';
 import rateLimiter from '@common/middleware/rateLimiter';
 import requestLogger from '@common/middleware/requestLogger';
 import { getCorsOrigin } from '@common/utils/envConfig';
-import { healthCheckRouter } from '@modules/healthCheck/healthCheckRoutes';
-import { userRouter } from '@modules/user/userRoutes';
+import { healthCheckRouter } from '@modules/healthCheck/healthCheckRouter';
+import { userRouter } from '@modules/user/userRouter';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
