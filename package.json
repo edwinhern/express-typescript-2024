@@ -57,7 +57,9 @@
     "**/*.{ts,js,json}": [
       "npm run lint",
       "npm run format"
-    ]
+    ],
+    "src/**/*.{ts,js,json}": "npm run format",
+    "tests/**/*.{ts,js,json}": "npm run format"
   },
   "author": "Edwin Hernandez",
   "repository": "edwinhern/express-typescript-2024",
