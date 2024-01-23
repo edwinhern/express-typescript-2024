@@ -58,6 +58,7 @@ Developed to streamline backend development, this boilerplate is your solution f
 ├── common
 │   ├── middleware
 │   │   ├── errorHandler.ts
+│   │   ├── openAPIDocument.ts
 │   │   ├── rateLimiter.ts
 │   │   └── requestLogger.ts
 │   ├── models
@@ -69,15 +70,17 @@ Developed to streamline backend development, this boilerplate is your solution f
 ├── index.ts
 ├── modules
 │   ├── healthCheck
+│   │   ├── healthCheckRegistry.ts
 │   │   └── healthCheckRouter.ts
 │   └── user
 │       ├── userModel.ts
+│       ├── userRegistry.ts
 │       ├── userRepository.ts
 │       ├── userRouter.ts
 │       └── userService.ts
 └── server.ts
 
-8 directories, 14 files
+8 directories, 17 files
 ```
 
 ## 🤝 Feedback and Contributions
