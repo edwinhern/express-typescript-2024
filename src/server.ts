@@ -36,7 +36,7 @@ app.use('/users', userRouter);
 
 // Swagger UI
 const openAPIDocument = generateOpenAPIDocument();
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openAPIDocument));
+app.use('/', swaggerUi.serve, swaggerUi.setup(openAPIDocument));
 
 // Error handlers
 app.use(errorHandler());
