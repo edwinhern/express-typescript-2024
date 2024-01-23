@@ -1,6 +1,10 @@
 export const getPort = () => getEnvVar<number>('PORT', 'number');
 export const getNodeEnv = () => getEnvVar<string>('NODE_ENV', 'string');
 export const getCorsOrigin = () => getEnvVar<string>('CORS_ORIGIN', 'string');
+export const getAPIBaseUrl = () => {
+  const envURL = getEnvVar<string>('API_BASE_URL', 'string');
+  return envURL || `http://localhost:${getPort()}`;
+};
 
 export function getEnvVar<T extends string | number>(key: string, type: 'string' | 'number'): T {
   const value = process.env[key];
