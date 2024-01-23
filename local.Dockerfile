@@ -7,8 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install global and app dependencies
-RUN npm install -g typescript tsx
-RUN npm install
+RUN npm ci --only=production
 
 # Bundle app source
 COPY . .
