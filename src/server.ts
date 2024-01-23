@@ -7,10 +7,10 @@ import { pino } from 'pino';
 import swaggerUi from 'swagger-ui-express';
 
 import errorHandler from '@common/middleware/errorHandler';
-import { generateOpenAPIDocument } from '@common/middleware/openAPIDocument';
 import rateLimiter from '@common/middleware/rateLimiter';
 import requestLogger from '@common/middleware/requestLogger';
 import { getCorsOrigin } from '@common/utils/envConfig';
+import { generateOpenAPIDocument } from '@common/utils/openAPI';
 import { healthCheckRouter } from '@modules/healthCheck/healthCheckRouter';
 import { userRouter } from '@modules/user/userRouter';
 
