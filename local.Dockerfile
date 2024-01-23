@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install global and app dependencies
-RUN npm ci --only=production
+RUN npm install
 
 # Bundle app source
 COPY . .
