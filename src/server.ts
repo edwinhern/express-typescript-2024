@@ -6,8 +6,8 @@ import path from 'path';
 import { pino } from 'pino';
 import swaggerUi from 'swagger-ui-express';
 
+import { generateOpenAPIDocument } from '@api-docs/openAPIDocumentGenerator';
 import errorHandler from '@common/middleware/errorHandler';
-import { generateOpenAPIDocument } from '@common/middleware/openAPIDocument';
 import rateLimiter from '@common/middleware/rateLimiter';
 import requestLogger from '@common/middleware/requestLogger';
 import { getCorsOrigin } from '@common/utils/envConfig';
