@@ -4,10 +4,10 @@
     "module": "CommonJS",
     "baseUrl": ".",
     "paths": {
-      "@modules/*": ["src/modules/*"],
+      "@api-docs/*": ["src/api-docs/*"],
       "@common/*": ["src/common/*"],
-      "@src/*": ["src/*"],
-      "@api-docs/*": ["src/api-docs/*"]
+      "@modules/*": ["src/modules/*"],
+      "@src/*": ["src/*"]
     },
     "moduleResolution": "Node",
     "outDir": "build",
