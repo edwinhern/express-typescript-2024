@@ -4,9 +4,10 @@
     "module": "CommonJS",
     "baseUrl": ".",
     "paths": {
-      "@modules/*": ["./src/modules/*"],
-      "@common/*": ["./src/common/*"],
-      "@src/*": ["./src/*"]
+      "@modules/*": ["src/modules/*"],
+      "@common/*": ["src/common/*"],
+      "@src/*": ["src/*"],
+      "@api-docs/*": ["src/api-docs/*"],
     },
     "moduleResolution": "Node",
     "outDir": "build",
@@ -16,9 +17,9 @@
     "strict": true,
     "noPropertyAccessFromIndexSignature": false,
     "skipLibCheck": true,
-    "ignoreDeprecations": "5.0"
+    "ignoreDeprecations": "5.0",
   },
   "extends": "@tsconfig/node-lts-strictest-esm/tsconfig.json",
   "exclude": ["node_modules"],
-  "include": ["src/**/*.ts", "tests/**/*.ts"]
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
 }
