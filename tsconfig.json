@@ -7,7 +7,7 @@
       "@modules/*": ["src/modules/*"],
       "@common/*": ["src/common/*"],
       "@src/*": ["src/*"],
-      "@api-docs/*": ["src/api-docs/*"],
+      "@api-docs/*": ["src/api-docs/*"]
     },
     "moduleResolution": "Node",
     "outDir": "build",
