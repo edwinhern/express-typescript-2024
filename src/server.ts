@@ -4,9 +4,8 @@ import express, { Express } from 'express';
 import helmet from 'helmet';
 import path from 'path';
 import { pino } from 'pino';
-import swaggerUi from 'swagger-ui-express';
 
-import { generateOpenAPIDocument } from '@api-docs/openAPIDocumentGenerator';
+import { openAPIRouter } from '@api-docs/openAPIRouter';
 import errorHandler from '@common/middleware/errorHandler';
 import rateLimiter from '@common/middleware/rateLimiter';
 import requestLogger from '@common/middleware/requestLogger';
@@ -35,8 +34,7 @@ app.use('/health-check', healthCheckRouter);
 app.use('/users', userRouter);
 
 // Swagger UI
-const openAPIDocument = generateOpenAPIDocument();
-app.use('/', swaggerUi.serve, swaggerUi.setup(openAPIDocument));
+app.use(openAPIRouter);
 
 // Error handlers
 app.use(errorHandler());

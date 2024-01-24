@@ -32,6 +32,9 @@ Developed to streamline backend development, this boilerplate is your solution f
 - ✅ Unified Code Style: ESLint and Prettier for a consistent coding standard.
 - 📃 API Response Standardization: ServiceResponse class for consistent API responses.
 - 🐳 Docker Support: Ready for containerization and deployment.
+- 📝 Input Validation with Zod: Strongly typed request validation using Zod.
+- 📚 Swagger API Documentation: Integration of express-swagger-ui and @asteasolutions/zod-to-openapi for generating and displaying Swagger UI documentation from    Zod schemas.
+- 🧩 API Spec Generation: Automated OpenAPI specification generation from Zod schemas to ensure up-to-date and accurate API documentation.
 
 ## 🛠️ Getting Started
 
@@ -57,7 +60,8 @@ Developed to streamline backend development, this boilerplate is your solution f
 .
 ├── api-docs
 │   ├── openAPIDocumentGenerator.ts
-│   └── openAPIResponseBuilders.ts
+│   ├── openAPIResponseBuilders.ts
+│   └── openAPIRouter.ts
 ├── common
 │   ├── middleware
 │   │   ├── errorHandler.ts
@@ -80,7 +84,7 @@ Developed to streamline backend development, this boilerplate is your solution f
 │       └── userService.ts
 └── server.ts
 
-9 directories, 16 files
+9 directories, 17 files
 ```
 
 ## 🤝 Feedback and Contributions

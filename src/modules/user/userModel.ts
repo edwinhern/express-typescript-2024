@@ -15,7 +15,7 @@ export const UserSchema = z.object({
   updatedAt: z.date(),
 });
 
-// Schema for 'GET users/:id' endpoint
+// Input Validation for 'GET users/:id' endpoint
 export const GetUserSchema = z.object({
   params: z.object({ id: commonValidations.id }),
 });

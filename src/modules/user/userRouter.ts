@@ -11,7 +11,6 @@ import { GetUserSchema, UserSchema } from './userModel';
 export const userRegistry = new OpenAPIRegistry();
 
 userRegistry.register('User', UserSchema);
-userRegistry.register('GetUser', GetUserSchema);
 
 export const userRouter: Router = (() => {
   const router = express.Router();
