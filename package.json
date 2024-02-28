@@ -4,22 +4,19 @@
   "description": "An Express.js boilerplate backend",
   "main": "index.ts",
   "scripts": {
-    "ts:check": "tsc --noEmit",
     "dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
     "build": "rimraf build && tsc",
-    "start": "NODE_ENV=production npm run build && tsx build/src/index.js",
-    "lint": "eslint --fix --ext .ts,.js src/ tests/",
-    "format": "prettier --write 'src/**/*.{ts,js,json}' 'tests/**/*.{ts,js,json}'",
+    "start": "tsx build/src/index.js",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix 'src/**/*.{ts,js}' 'tests/**/*.{ts,js}'",
     "test": "jest",
-    "prepare": "husky install",
-    "docker:build": "docker-compose build --no-cache",
-    "docker:start": "docker-compose up",
-    "docker:stop": "docker-compose down"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^6.3.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "envalid": "^8.0.0",
     "express": "^4.18.2",
     "express-rate-limit": "^7.1.5",
     "helmet": "^7.1.0",
@@ -52,9 +49,7 @@
     "typescript": "^5.3.3"
   },
   "lint-staged": {
-    "**/*.{ts,js,json}": ["npm run lint", "npm run format"],
-    "src/**/*.{ts,js,json}": "npm run format",
-    "tests/**/*.{ts,js,json}": "npm run format"
+    "*.{ts,js,json}": "npm run lint:fix"
   },
   "author": "Edwin Hernandez",
   "repository": "edwinhern/express-typescript-2024",
