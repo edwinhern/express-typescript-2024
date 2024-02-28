@@ -4,7 +4,7 @@ import { IncomingMessage, ServerResponse } from 'http';
 import { LevelWithSilent } from 'pino';
 import { CustomAttributeKeys, Options, pinoHttp } from 'pino-http';
 
-import { getNodeEnv } from '@common/utils/envConfig';
+import { env } from '@common/utils/envConfig';
 
 type PinoCustomProps = {
   request: Request;
@@ -43,8 +43,8 @@ const customProps = (req: Request, res: Response): PinoCustomProps => ({
 });
 
 const responseBodyMiddleware: RequestHandler = (_req, res, next) => {
-  const env = getNodeEnv() !== 'production';
-  if (env) {
+  const isNotProduction = !env.isProduction;
+  if (isNotProduction) {
     const originalSend = res.send;
     res.send = function (content) {
       res.locals.responseBody = content;
