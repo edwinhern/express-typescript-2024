@@ -19,7 +19,7 @@
     "skipLibCheck": true,
     "ignoreDeprecations": "5.0"
   },
-  "extends": "@tsconfig/node-lts-strictest-esm/tsconfig.json",
+  "extends": [],
   "exclude": ["node_modules"],
   "include": ["src/**/*.ts", "tests/**/*.ts"]
 }
