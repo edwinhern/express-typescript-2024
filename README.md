@@ -53,7 +53,7 @@ Developed to streamline backend development, this boilerplate is your solution f
 
 - Development Mode: `npm run dev`
 - Building: `npm run build`
-- Production Mode: `npm run start` or `npm run docker:start`
+- Production Mode: `npm run build` and `npm run start`
 
 ## 📁 Project Structure
 ```
