@@ -14,6 +14,9 @@ import { userRouter } from '@modules/user/userRouter';
 const logger = pino({ name: 'server start' });
 const app: Express = express();
 
+// Set the application to trust the reverse proxy
+app.set('trust proxy', true);
+
 // Middlewares
 app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
 app.use(helmet());
