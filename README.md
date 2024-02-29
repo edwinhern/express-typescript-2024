@@ -52,7 +52,7 @@ Developed to streamline backend development, this boilerplate is your solution f
 
 - Development Mode: `npm run dev`
 - Building: `npm run build`
-- Production Mode: `npm run start` or `npm run docker:start`
+- Production Mode: Set `.env` to `NODE_ENV="production"` then `npm run build && npm run start`
 
 ## 📁 Project Structure
 
