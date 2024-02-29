@@ -33,7 +33,6 @@ Developed to streamline backend development, this boilerplate is your solution f
 - 📃 API Response Standardization: ServiceResponse class for consistent API responses.
 - 🐳 Docker Support: Ready for containerization and deployment.
 - 📝 Input Validation with Zod: Strongly typed request validation using Zod.
-- 📚 Swagger API Documentation: Integration of express-swagger-ui and @asteasolutions/zod-to-openapi for generating and displaying Swagger UI documentation from    Zod schemas.
 - 🧩 API Spec Generation: Automated OpenAPI specification generation from Zod schemas to ensure up-to-date and accurate API documentation.
 
 ## 🛠️ Getting Started
@@ -53,9 +52,10 @@ Developed to streamline backend development, this boilerplate is your solution f
 
 - Development Mode: `npm run dev`
 - Building: `npm run build`
-- Production Mode: Set `.env` to `NODE_ENV="production"` then `npm run build && npm run start`
+- Production Mode: `npm run start` or `npm run docker:start`
 
 ## 📁 Project Structure
+
 ```
 .
 ├── api-docs

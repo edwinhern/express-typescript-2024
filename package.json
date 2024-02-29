@@ -8,7 +8,7 @@
     "build": "rimraf build && tsc",
     "start": "tsx build/src/index.js",
     "lint": "eslint",
-    "lint:fix": "eslint --fix 'src/**/*.{ts,js}' 'tests/**/*.{ts,js}'",
+    "lint:fix": "eslint --fix",
     "test": "jest",
     "prepare": "husky install"
   },
