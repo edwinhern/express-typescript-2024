@@ -1,10 +1,10 @@
 import { StatusCodes } from 'http-status-codes';
 import request from 'supertest';
 
-import { ServiceResponse } from '@common/models/serviceResponse';
-import { User } from '@modules/user/userModel';
-import { users } from '@modules/user/userRepository';
-import { app } from '@src/server';
+import { ServiceResponse } from '@/common/models/serviceResponse';
+import { User } from '@/routes/user/userModel';
+import { users } from '@/routes/user/userRepository';
+import { app } from '@/server';
 
 describe('User API Endpoints', () => {
   describe('GET /users', () => {

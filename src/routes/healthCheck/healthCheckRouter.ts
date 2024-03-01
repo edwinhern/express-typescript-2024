@@ -3,9 +3,9 @@ import express, { Request, Response, Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { z } from 'zod';
 
-import { createApiResponse } from '@api-docs/openAPIResponseBuilders';
-import { ResponseStatus, ServiceResponse } from '@common/models/serviceResponse';
-import { handleServiceResponse } from '@common/utils/httpHandlers';
+import { createApiResponse } from '@/api-docs/openAPIResponseBuilders';
+import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse';
+import { handleServiceResponse } from '@/common/utils/httpHandlers';
 
 export const healthCheckRegistry = new OpenAPIRegistry();
 

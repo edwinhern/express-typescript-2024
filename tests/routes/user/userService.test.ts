@@ -1,10 +1,10 @@
 import { StatusCodes } from 'http-status-codes';
 
-import { User } from '@modules/user/userModel';
-import { userRepository } from '@modules/user/userRepository';
-import { userService } from '@modules/user/userService';
+import { User } from '@/routes/user/userModel';
+import { userRepository } from '@/routes/user/userRepository';
+import { userService } from '@/routes/user/userService';
 
-jest.mock('@modules/user/userRepository');
+jest.mock('@/routes/user/userRepository');
 
 describe('userService', () => {
   const mockUsers: User[] = [

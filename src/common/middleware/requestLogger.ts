@@ -4,7 +4,7 @@ import { IncomingMessage, ServerResponse } from 'http';
 import { LevelWithSilent } from 'pino';
 import { CustomAttributeKeys, Options, pinoHttp } from 'pino-http';
 
-import { env } from '@common/utils/envConfig';
+import { env } from '@/common/utils/envConfig';
 
 type PinoCustomProps = {
   request: Request;
