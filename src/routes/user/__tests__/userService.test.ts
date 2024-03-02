@@ -42,7 +42,7 @@ describe('userService', () => {
       expect(result.statusCode).toEqual(StatusCodes.NOT_FOUND);
       expect(result.success).toBeFalsy();
       expect(result.message).toContain('No Users found');
-      expect(result.responseObject).toEqual(null);
+      expect(result.responseObject).toBeNull();
     });
 
     it('handles errors for findAllAsync', async () => {
@@ -56,7 +56,7 @@ describe('userService', () => {
       expect(result.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
       expect(result.success).toBeFalsy();
       expect(result.message).toContain('Error finding all users');
-      expect(result.responseObject).toEqual(null);
+      expect(result.responseObject).toBeNull();
     });
   });
 
@@ -89,7 +89,7 @@ describe('userService', () => {
       expect(result.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
       expect(result.success).toBeFalsy();
       expect(result.message).toContain(`Error finding user with id ${testId}`);
-      expect(result.responseObject).toEqual(null);
+      expect(result.responseObject).toBeNull();
     });
 
     it('returns a not found error for non-existent ID', async () => {
@@ -104,7 +104,7 @@ describe('userService', () => {
       expect(result.statusCode).toEqual(StatusCodes.NOT_FOUND);
       expect(result.success).toBeFalsy();
       expect(result.message).toContain('User not found');
-      expect(result.responseObject).toEqual(null);
+      expect(result.responseObject).toBeNull();
     });
   });
 });
