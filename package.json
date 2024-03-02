@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
     "build": "rimraf build && tsc",
-    "start": "tsx build/src/index.js",
+    "start": "tsx build/index.js",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "test": "jest",
