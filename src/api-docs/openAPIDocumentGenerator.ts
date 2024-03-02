@@ -1,7 +1,7 @@
 import { OpenApiGeneratorV3, OpenAPIRegistry } from '@asteasolutions/zod-to-openapi';
 
-import { healthCheckRegistry } from '@modules/healthCheck/healthCheckRouter';
-import { userRegistry } from '@modules/user/userRouter';
+import { healthCheckRegistry } from '@/routes/healthCheck/healthCheckRouter';
+import { userRegistry } from '@/routes/user/userRouter';
 
 export function generateOpenAPIDocument() {
   const registry = new OpenAPIRegistry([healthCheckRegistry, userRegistry]);

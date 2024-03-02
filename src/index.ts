@@ -1,5 +1,5 @@
-import { env } from '@common/utils/envConfig';
-import { app, logger } from '@src/server';
+import { env } from '@/common/utils/envConfig';
+import { app, logger } from '@/server';
 
 const port = env.PORT;
 

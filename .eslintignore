@@ -3,3 +3,4 @@ build
 package-lock.json
 package.json
 coverage
+tsconfig.json

@@ -1,9 +1,9 @@
 import { StatusCodes } from 'http-status-codes';
 
-import { ResponseStatus, ServiceResponse } from '@common/models/serviceResponse';
-import { User } from '@modules/user/userModel';
-import { userRepository } from '@modules/user/userRepository';
-import { logger } from '@src/server';
+import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse';
+import { User } from '@/routes/user/userModel';
+import { userRepository } from '@/routes/user/userRepository';
+import { logger } from '@/server';
 
 export const userService = {
   // Retrieves all users from the database
