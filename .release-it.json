@@ -1,67 +1,67 @@
 {
-    "git": {
-        "commitMessage": "chore: release v${version}"
-    },
-    "github": {
-        "release": true
-    },
-    "npm": {
-        "publish": false
-    },
-    "plugins": {
-        "@release-it/conventional-changelog": {
-            "infile": "CHANGELOG.md",
-            "preset": "conventionalcommits",
-            "types": [
-                {
-                    "type": "feat",
-                    "section": "✨ Features"
-                },
-                {
-                    "type": "fix",
-                    "section": "🐛 Bug Fixes"
-                },
-                {
-                    "type": "perf",
-                    "section": "⚡ Performance Improvements"
-                },
-                {
-                    "type": "revert",
-                    "section": "⏪ Reverts"
-                },
-                {
-                    "type": "docs",
-                    "section": "📚 Documentation"
-                },
-                {
-                    "type": "style",
-                    "section": "💎 Code Style"
-                },
-                {
-                    "type": "refactor",
-                    "section": "🛠 Refactors"
-                },
-                {
-                    "type": "test",
-                    "section": "🚨 Tests"
-                },
-                {
-                    "type": "build",
-                    "section": "📦 Build System"
-                },
-                {
-                    "type": "ci",
-                    "section": "👷 Continuous Integration"
-                },
-                {
-                    "type": "chore",
-                    "section": "🗃 Chores"
-                },
-                {
-                    "type": "config",
-                    "section": "🔧 Configuration"
-                }
-            ]
+  "git": {
+    "commitMessage": "chore: release v${version}"
+  },
+  "github": {
+    "release": true
+  },
+  "npm": {
+    "publish": false
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "infile": "CHANGELOG.md",
+      "preset": "conventionalcommits",
+      "types": [
+        {
+          "type": "feat",
+          "section": "✨ Features"
+        },
+        {
+          "type": "fix",
+          "section": "🐛 Bug Fixes"
+        },
+        {
+          "type": "perf",
+          "section": "⚡ Performance Improvements"
+        },
+        {
+          "type": "revert",
+          "section": "⏪ Reverts"
+        },
+        {
+          "type": "docs",
+          "section": "📚 Documentation"
+        },
+        {
+          "type": "style",
+          "section": "💎 Code Style"
+        },
+        {
+          "type": "refactor",
+          "section": "🛠 Refactors"
+        },
+        {
+          "type": "test",
+          "section": "🚨 Tests"
+        },
+        {
+          "type": "build",
+          "section": "📦 Build System"
+        },
+        {
+          "type": "ci",
+          "section": "👷 Continuous Integration"
+        },
+        {
+          "type": "chore",
+          "section": "🗃 Chores"
+        },
+        {
+          "type": "config",
+          "section": "🔧 Configuration"
         }
+      ]
     }
+  }
 }

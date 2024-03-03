@@ -26,7 +26,7 @@ describe('User API Endpoints', () => {
     it('should return a user for a valid ID', async () => {
       // Arrange
       const testId = 1;
-      const expectedUser = users.find((user) => user.id === testId);
+      const expectedUser = users.find((user) => user.id === testId) as User;
 
       // Act
       const response = await request(app).get(`/users/${testId}`);
@@ -36,7 +36,7 @@ describe('User API Endpoints', () => {
       expect(response.statusCode).toEqual(StatusCodes.OK);
       expect(responseBody.success).toBeTruthy();
       expect(responseBody.message).toContain('User found');
-      if (!expectedUser) fail('Expected user not found in test data');
+      if (!expectedUser) throw new Error('Invalid test data: expectedUser is undefined');
       compareUsers(expectedUser, responseBody.responseObject);
     });
 
@@ -72,7 +72,7 @@ describe('User API Endpoints', () => {
 
 function compareUsers(mockUser: User, responseUser: User) {
   if (!mockUser || !responseUser) {
-    fail('Invalid test data: mockUser or responseUser is undefined');
+    throw new Error('Invalid test data: mockUser or responseUser is undefined');
   }
 
   expect(responseUser.id).toEqual(mockUser.id);

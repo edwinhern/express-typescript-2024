@@ -1,6 +1,4 @@
-node_modules
 build
+coverage
 package-lock.json
 package.json
-coverage
-tsconfig.json

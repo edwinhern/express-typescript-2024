@@ -1,10 +1,17 @@
 import { StatusCodes } from 'http-status-codes';
+import { Mock } from 'vitest';
 
 import { User } from '@/routes/user/userModel';
 import { userRepository } from '@/routes/user/userRepository';
 import { userService } from '@/routes/user/userService';
 
-jest.mock('@/routes/user/userRepository');
+vi.mock('@/routes/user/userRepository');
+vi.mock('@/server', () => ({
+  ...vi.importActual('@/server'),
+  logger: {
+    error: vi.fn(),
+  },
+}));
 
 describe('userService', () => {
   const mockUsers: User[] = [
@@ -12,14 +19,10 @@ describe('userService', () => {
     { id: 2, name: 'Bob', email: 'bob@example.com', age: 21, createdAt: new Date(), updatedAt: new Date() },
   ];
 
-  beforeEach(() => {
-    jest.resetAllMocks();
-  });
-
   describe('findAll', () => {
     it('return all users', async () => {
       // Arrange
-      (userRepository.findAllAsync as jest.Mock).mockReturnValue(mockUsers);
+      (userRepository.findAllAsync as Mock).mockReturnValue(mockUsers);
 
       // Act
       const result = await userService.findAll();
@@ -33,7 +36,7 @@ describe('userService', () => {
 
     it('returns a not found error for no users found', async () => {
       // Arrange
-      (userRepository.findAllAsync as jest.Mock).mockReturnValue(null);
+      (userRepository.findAllAsync as Mock).mockReturnValue(null);
 
       // Act
       const result = await userService.findAll();
@@ -47,7 +50,7 @@ describe('userService', () => {
 
     it('handles errors for findAllAsync', async () => {
       // Arrange
-      (userRepository.findAllAsync as jest.Mock).mockRejectedValue(new Error('Database error'));
+      (userRepository.findAllAsync as Mock).mockRejectedValue(new Error('Database error'));
 
       // Act
       const result = await userService.findAll();
@@ -65,7 +68,7 @@ describe('userService', () => {
       // Arrange
       const testId = 1;
       const mockUser = mockUsers.find((user) => user.id === testId);
-      (userRepository.findByIdAsync as jest.Mock).mockReturnValue(mockUser);
+      (userRepository.findByIdAsync as Mock).mockReturnValue(mockUser);
 
       // Act
       const result = await userService.findById(testId);
@@ -80,7 +83,7 @@ describe('userService', () => {
     it('handles errors for findByIdAsync', async () => {
       // Arrange
       const testId = 1;
-      (userRepository.findByIdAsync as jest.Mock).mockRejectedValue(new Error('Database error'));
+      (userRepository.findByIdAsync as Mock).mockRejectedValue(new Error('Database error'));
 
       // Act
       const result = await userService.findById(testId);
@@ -95,7 +98,7 @@ describe('userService', () => {
     it('returns a not found error for non-existent ID', async () => {
       // Arrange
       const testId = 1;
-      (userRepository.findByIdAsync as jest.Mock).mockReturnValue(null);
+      (userRepository.findByIdAsync as Mock).mockReturnValue(null);
 
       // Act
       const result = await userService.findById(testId);
