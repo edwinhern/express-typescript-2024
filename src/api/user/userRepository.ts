@@ -1,4 +1,4 @@
-import { User } from '@/routes/user/userModel';
+import { User } from '@/api/user/userModel';
 
 export const users: User[] = [
   { id: 1, name: 'Alice', email: 'alice@example.com', age: 42, createdAt: new Date(), updatedAt: new Date() },
