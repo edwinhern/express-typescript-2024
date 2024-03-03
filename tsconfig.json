@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ESNext",
     "module": "CommonJS",
     "baseUrl": ".",
     "paths": {
@@ -14,7 +14,8 @@
     "strict": true,
     "noPropertyAccessFromIndexSignature": false,
     "skipLibCheck": true,
-    "ignoreDeprecations": "5.0"
+    "ignoreDeprecations": "5.0",
+    "types": ["vitest/globals"]
   },
   "extends": [],
   "exclude": ["node_modules"],
