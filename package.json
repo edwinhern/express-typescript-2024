@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
     "build": "rimraf build && tsup",
-    "start": "tsx build/index.js",
+    "start": "tsx dist/index.js",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prettier": "prettier --config .prettierrc --write .",
