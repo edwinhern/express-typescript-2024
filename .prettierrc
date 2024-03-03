@@ -1,8 +1,15 @@
 {
-  "parser": "typescript",
   "trailingComma": "es5",
   "tabWidth": 2,
   "printWidth": 120,
   "singleQuote": true,
-  "semi": true
+  "semi": true,
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "options": {
+        "parser": "typescript"
+      }
+    }
+  ]
 }
