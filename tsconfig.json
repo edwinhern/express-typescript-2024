@@ -7,7 +7,7 @@
       "@/*": ["src/*"]
     },
     "moduleResolution": "Node",
-    "outDir": "build",
+    "outDir": "dist",
     "importsNotUsedAsValues": "remove",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
