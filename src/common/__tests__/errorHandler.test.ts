@@ -7,12 +7,15 @@ import errorHandler from '@/common/middleware/errorHandler';
 describe('Error Handler Middleware', () => {
   const app = express();
 
-  // Setup a route that throws an error
   app.get('/error', () => {
     throw new Error('Test error');
   });
 
-  // Use your error handler middleware
+  app.get('/next-error', (_req, _res, next) => {
+    const error = new Error('Error passed to next()');
+    next(error);
+  });
+
   app.use(errorHandler());
 
   it('should return 404 for unknown routes', async () => {
@@ -22,6 +25,11 @@ describe('Error Handler Middleware', () => {
 
   it('should handle thrown errors with 500 status code', async () => {
     const response = await request(app).get('/error');
+    expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+  });
+
+  it('should handle errors passed to next() with 500 status code', async () => {
+    const response = await request(app).get('/next-error');
     expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
   });
 });

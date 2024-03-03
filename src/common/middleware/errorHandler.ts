@@ -10,8 +10,4 @@ const addErrorToRequestLog: ErrorRequestHandler = (err, _req, res, next) => {
   next(err);
 };
 
-const defaultErrorRequestHandler: ErrorRequestHandler = (_err, _req, res) => {
-  res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
-};
-
-export default () => [unexpectedRequest, addErrorToRequestLog, defaultErrorRequestHandler];
+export default () => [unexpectedRequest, addErrorToRequestLog];
