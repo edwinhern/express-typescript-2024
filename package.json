@@ -10,7 +10,9 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prettier": "prettier --config .prettierrc --write .",
-    "test": "vitest --coverage",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --coverage",
     "prepare": "husky install",
     "release": "release-it"
   },
