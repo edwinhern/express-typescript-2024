@@ -1,11 +1,11 @@
 import { StatusCodes } from 'http-status-codes';
 import { Mock } from 'vitest';
 
-import { User } from '@/api/user/userModel';
-import { userRepository } from '@/api/user/userRepository';
-import { userService } from '@/api/user/userService';
+import { User } from '@/api/v1/user/userModel';
+import { userRepository } from '@/api/v1/user/userRepository';
+import { userService } from '@/api/v1/user/userService';
 
-vi.mock('@/api/user/userRepository');
+vi.mock('@/api/v1/user/userRepository');
 vi.mock('@/server', () => ({
   ...vi.importActual('@/server'),
   logger: {
