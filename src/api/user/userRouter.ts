@@ -2,8 +2,8 @@ import { OpenAPIRegistry } from '@asteasolutions/zod-to-openapi';
 import express, { Request, Response, Router } from 'express';
 import { z } from 'zod';
 
-import { GetUserSchema, UserSchema } from '@/api/v1/user/userModel';
-import { userService } from '@/api/v1/user/userService';
+import { GetUserSchema, UserSchema } from '@/api/user/userModel';
+import { userService } from '@/api/user/userService';
 import { createApiResponse } from '@/api-docs/openAPIResponseBuilders';
 import { handleServiceResponse, validateRequest } from '@/common/utils/httpHandlers';
 
@@ -16,7 +16,7 @@ export const userRouter: Router = (() => {
 
   userRegistry.registerPath({
     method: 'get',
-    path: '/api/v1/users',
+    path: '/users',
     tags: ['User'],
     responses: createApiResponse(z.array(UserSchema), 'Success'),
   });
@@ -28,7 +28,7 @@ export const userRouter: Router = (() => {
 
   userRegistry.registerPath({
     method: 'get',
-    path: '/api/v1/users/{id}',
+    path: '/users/{id}',
     tags: ['User'],
     request: { params: GetUserSchema.shape.params },
     responses: createApiResponse(UserSchema, 'Success'),

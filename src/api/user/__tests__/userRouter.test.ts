@@ -1,16 +1,16 @@
 import { StatusCodes } from 'http-status-codes';
 import request from 'supertest';
 
-import { User } from '@/api/v1/user/userModel';
-import { users } from '@/api/v1/user/userRepository';
+import { User } from '@/api/user/userModel';
+import { users } from '@/api/user/userRepository';
 import { ServiceResponse } from '@/common/models/serviceResponse';
 import { app } from '@/server';
 
 describe('User API Endpoints', () => {
-  describe('GET /api/v1/users', () => {
+  describe('GET /users', () => {
     it('should return a list of users', async () => {
       // Act
-      const response = await request(app).get('/api/v1/users');
+      const response = await request(app).get('/users');
       const responseBody: ServiceResponse<User[]> = response.body;
 
       // Assert
@@ -22,14 +22,14 @@ describe('User API Endpoints', () => {
     });
   });
 
-  describe('GET /api/v1/users/:id', () => {
+  describe('GET /users/:id', () => {
     it('should return a user for a valid ID', async () => {
       // Arrange
       const testId = 1;
       const expectedUser = users.find((user) => user.id === testId) as User;
 
       // Act
-      const response = await request(app).get(`/api/v1/users/${testId}`);
+      const response = await request(app).get(`/users/${testId}`);
       const responseBody: ServiceResponse<User> = response.body;
 
       // Assert
@@ -45,7 +45,7 @@ describe('User API Endpoints', () => {
       const testId = Number.MAX_SAFE_INTEGER;
 
       // Act
-      const response = await request(app).get(`/api/v1/users/${testId}`);
+      const response = await request(app).get(`/users/${testId}`);
       const responseBody: ServiceResponse = response.body;
 
       // Assert
@@ -58,7 +58,7 @@ describe('User API Endpoints', () => {
     it('should return a bad request for invalid ID format', async () => {
       // Act
       const invalidInput = 'abc';
-      const response = await request(app).get(`/api/v1/users/${invalidInput}`);
+      const response = await request(app).get(`/users/${invalidInput}`);
       const responseBody: ServiceResponse = response.body;
 
       // Assert

@@ -1,4 +1,4 @@
-import { User } from '@/api/v1/user/userModel';
+import { User } from '@/api/user/userModel';
 
 export const users: User[] = [
   { id: 1, name: 'Alice', email: 'alice@example.com', age: 42, createdAt: new Date(), updatedAt: new Date() },
