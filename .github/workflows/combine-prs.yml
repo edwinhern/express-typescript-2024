@@ -17,10 +17,6 @@ on:
         description: 'Title of the combined PR to be created'
         required: true
         default: 'chore(deps): combine dependabot updates'
-      combineBranchName:
-        description: 'Name of the branch to combine PRs into'
-        required: true
-        default: 'combine-prs-branch-${{ github.run_id }}'
       ignoreLabel:
         description: 'Exclude PRs with this label'
         required: true
@@ -149,7 +145,7 @@ jobs:
             await github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: '${{ github.event.inputs.combinePRTitle }}',
+              title: 'Combined PR',
               head: '${{ github.event.inputs.combineBranchName }}',
               base: baseBranch,
               body: body
