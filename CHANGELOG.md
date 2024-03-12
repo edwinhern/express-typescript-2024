@@ -1,3 +1,16 @@
+## [1.2.1](https://github.com/edwinhern/express-typescript-2024/compare/1.2.0...1.2.1) (2024-3-12)
+
+### Bug Fixes
+
+- :art: Update start script in package.json and remove outDir option in tsup.config.ts ([8800833](https://github.com/edwinhern/express-typescript-2024/commit/8800833df78871fa37d96cef38cdfc2d2f4bb8b1))
+- :bug: Update combine-prs.yml workflow file ([e350acc](https://github.com/edwinhern/express-typescript-2024/commit/e350acce8301358467d589fb88b6c25f34899754))
+- :fire: Update combine-prs.yml workflow ([981a7b4](https://github.com/edwinhern/express-typescript-2024/commit/981a7b4af56394dc683a00f0450d6e339f7e9627))
+- :zap: Add outDir configuration to tsup.config.ts ([17b10a7](https://github.com/edwinhern/express-typescript-2024/commit/17b10a7b2ff219db7c4c6cc04422c47be5648f6d))
+
+### Reverts
+
+- :fire: Remove combine-prs workflow ([ee36cb6](https://github.com/edwinhern/express-typescript-2024/commit/ee36cb6294e656a3310360987e1f2a332118aaae))
+
 ## 1.2.0 (2024-3-3)
 
 ### Features
