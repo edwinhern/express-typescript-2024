@@ -30,5 +30,8 @@ jobs:
       - name: Run build
         run: npm run build
 
+      - name: Set up .env for tests
+        run: cp .env.template .env
+
       - name: Run Test
         run: npm test
