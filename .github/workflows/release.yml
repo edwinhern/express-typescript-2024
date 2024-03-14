@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Set up .env for tests
+        run: cp .env.template .env
+
       - name: Run Release
         run: npm run release --ci
         env:
