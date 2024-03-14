@@ -12,6 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set Git User
+        uses: git-actions/set-user@v1
+
       - name: Read .nvmrc
         run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
 
@@ -27,7 +30,7 @@ jobs:
       - name: Run Release
         run: npm run release --ci
         env:
-          GH_TOKEN: ${{ secrets.GH_Token }}
+          GITHUB_TOKEN: ${{ secrets.GH_Token }}
 
       - name: End message
         run: echo "All done!"
