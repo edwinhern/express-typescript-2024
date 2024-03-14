@@ -1,0 +1,29 @@
+name: Release & Publish to NPM
+
+on: workflow_dispatch
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Read .nvmrc
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Release
+        run: npm run release --ci
+        env:
+          GH_TOKEN: ${{ secrets.GH_Token }}
+
+      - name: End message
+        run: echo "All done!"
