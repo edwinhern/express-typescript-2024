@@ -22,12 +22,12 @@ Developed to streamline backend development, this boilerplate is your solution f
 - 📁 Modular Structure: Organized by feature for easy navigation and scalability.
 - 💨 Faster Execution with tsx: Rapid TypeScript execution with esbuild, complemented by tsc for type checking.
 - 🌐 Stable Node Environment: Latest LTS Node version in .nvmrc.
-- 🔧 Simplified Environment Variables: Centralized and easy-to-manage configuration.
+- 🔧 Simplified Environment Variables with Envalid: Centralized and easy-to-manage configuration.
 - 🔗 Path Aliases: Cleaner code with shortcut imports.
 - 🔄 Dependabot Integration: Automatic updates for secure and up-to-date dependencies.
 - 🔒 Security: Helmet for HTTP header security and CORS setup.
 - 📊 Logging: Efficient logging with pino-http.
-- 🧪 Comprehensive Testing: Robust setup with Jest and Supertest.
+- 🧪 Comprehensive Testing: Robust setup with Vitest and Supertest.
 - 🔑 Code Quality Assurance: Husky and lint-staged for consistent quality.
 - ✅ Unified Code Style: ESLint and Prettier for a consistent coding standard.
 - 📃 API Response Standardization: ServiceResponse class for consistent API responses.
@@ -58,11 +58,27 @@ Developed to streamline backend development, this boilerplate is your solution f
 
 ```
 .
+├── api
+│   ├── healthCheck
+│   │   ├── __tests__
+│   │   │   └── healthCheckRouter.test.ts
+│   │   └── healthCheckRouter.ts
+│   └── user
+│       ├── __tests__
+│       │   ├── userRouter.test.ts
+│       │   └── userService.test.ts
+│       ├── userModel.ts
+│       ├── userRepository.ts
+│       ├── userRouter.ts
+│       └── userService.ts
 ├── api-docs
 │   ├── openAPIDocumentGenerator.ts
 │   ├── openAPIResponseBuilders.ts
 │   └── openAPIRouter.ts
 ├── common
+│   ├── __tests__
+│   │   ├── errorHandler.test.ts
+│   │   └── requestLogger.test.ts
 │   ├── middleware
 │   │   ├── errorHandler.ts
 │   │   ├── rateLimiter.ts
@@ -74,17 +90,8 @@ Developed to streamline backend development, this boilerplate is your solution f
 │       ├── envConfig.ts
 │       └── httpHandlers.ts
 ├── index.ts
-├── modules
-│   ├── healthCheck
-│   │   └── healthCheckRouter.ts
-│   └── user
-│       ├── userModel.ts
-│       ├── userRepository.ts
-│       ├── userRouter.ts
-│       └── userService.ts
 └── server.ts
 
-9 directories, 17 files
 ```
 
 ## 🤝 Feedback and Contributions

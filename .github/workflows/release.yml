@@ -1,17 +1,16 @@
-name: Build Express+Typescript Application
+name: Release & Publish to NPM
 
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+    branches: ['master']
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Read .nvmrc
         run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
@@ -25,14 +24,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run lint
-        run: npm run lint
+      - name: Run Release
+        run: npm run release --ci
+        env:
+          GH_TOKEN: ${{ secrets.GH_Token }}
 
-      - name: Run build
-        run: npm run build
-
-      - name: Set up .env for tests
-        run: cp .env.template .env
-
-      - name: Run Test
-        run: npm test
+      - name: End message
+        run: echo "All done!"
