@@ -1,10 +1,21 @@
 import { randomUUID } from 'crypto';
 import { Request, RequestHandler, Response } from 'express';
 import { IncomingMessage, ServerResponse } from 'http';
+import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import { LevelWithSilent } from 'pino';
 import { CustomAttributeKeys, Options, pinoHttp } from 'pino-http';
 
 import { env } from '@/common/utils/envConfig';
+
+enum LogLevel {
+  Fatal = 'fatal',
+  Error = 'error',
+  Warn = 'warn',
+  Info = 'info',
+  Debug = 'debug',
+  Trace = 'trace',
+  Silent = 'silent',
+}
 
 type PinoCustomProps = {
   request: Request;
@@ -57,14 +68,14 @@ const responseBodyMiddleware: RequestHandler = (_req, res, next) => {
 };
 
 const customLogLevel = (_req: IncomingMessage, res: ServerResponse<IncomingMessage>, err?: Error): LevelWithSilent => {
-  if (res.statusCode >= 400 && res.statusCode < 500) return 'warn';
-  if (res.statusCode >= 500 || err) return 'error';
-  if (res.statusCode >= 300 && res.statusCode < 400) return 'silent';
-  return 'info';
+  if (err || res.statusCode >= StatusCodes.INTERNAL_SERVER_ERROR) return LogLevel.Error;
+  if (res.statusCode >= StatusCodes.BAD_REQUEST) return LogLevel.Warn;
+  if (res.statusCode >= StatusCodes.MULTIPLE_CHOICES) return LogLevel.Silent;
+  return LogLevel.Info;
 };
 
 const customSuccessMessage = (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
-  if (res.statusCode === 404) return 'resource not found';
+  if (res.statusCode === StatusCodes.NOT_FOUND) return getReasonPhrase(StatusCodes.NOT_FOUND);
   return `${req.method} completed`;
 };
 
