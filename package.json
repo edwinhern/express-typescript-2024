@@ -31,7 +31,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.0.3",
+    "@commitlint/cli": "^19.2.0",
     "@commitlint/config-conventional": "^19.1.0",
     "@release-it/conventional-changelog": "^8.0.1",
     "@types/cors": "^2.8.17",
