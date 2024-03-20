@@ -1,7 +1,7 @@
 {
   "name": "express-typescript-boilerplate",
   "version": "1.2.6",
-  "description": "An Express.js boilerplate backend",
+  "description": "An Express boilerplate backend",
   "main": "index.ts",
   "scripts": {
     "dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
@@ -13,7 +13,7 @@
     "format": "prettier --config .prettierrc --write .",
     "test": "vitest run",
     "test:dev": "vitest dev",
-    "test:coverage": "vitest run --coverage",
+    "test:cov": "vitest run --coverage",
     "prepare": "husky install",
     "release": "release-it"
   },
