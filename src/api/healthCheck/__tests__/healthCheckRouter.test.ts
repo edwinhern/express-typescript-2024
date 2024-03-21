@@ -2,7 +2,9 @@ import { StatusCodes } from 'http-status-codes';
 import request from 'supertest';
 
 import { ServiceResponse } from '@/common/models/serviceResponse';
-import { app } from '@/server';
+import { app as Application } from '@/server';
+
+const app = Application.getServer();
 
 describe('Health Check API endpoints', () => {
   it('GET / - success', async () => {

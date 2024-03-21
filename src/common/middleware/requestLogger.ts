@@ -87,4 +87,4 @@ const genReqId = (req: IncomingMessage, res: ServerResponse<IncomingMessage>) =>
   return id;
 };
 
-export default requestLogger;
+export default requestLogger();

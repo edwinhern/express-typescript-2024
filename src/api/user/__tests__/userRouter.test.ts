@@ -4,7 +4,9 @@ import request from 'supertest';
 import { User } from '@/api/user/userModel';
 import { users } from '@/api/user/userRepository';
 import { ServiceResponse } from '@/common/models/serviceResponse';
-import { app } from '@/server';
+import { app as Application } from '@/server';
+
+const app = Application.getServer();
 
 describe('User API Endpoints', () => {
   describe('GET /users', () => {
