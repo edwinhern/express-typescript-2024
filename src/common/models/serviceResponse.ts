@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 export enum ResponseStatus {
   Success,
   Failed,
@@ -18,11 +16,3 @@ export class ServiceResponse<T = null> {
     this.statusCode = statusCode;
   }
 }
-
-export const ServiceResponseSchema = <T extends z.ZodTypeAny>(dataSchema: T) =>
-  z.object({
-    success: z.boolean(),
-    message: z.string(),
-    responseObject: dataSchema.optional(),
-    statusCode: z.number(),
-  });

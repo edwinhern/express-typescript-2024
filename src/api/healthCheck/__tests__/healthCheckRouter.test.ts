@@ -8,7 +8,7 @@ const app = Application.getServer();
 
 describe('Health Check API endpoints', () => {
   it('GET / - success', async () => {
-    const response = await request(app).get('/health-check');
+    const response = await request(app).get('/api/health-check');
     const result: ServiceResponse = response.body;
 
     expect(response.statusCode).toEqual(StatusCodes.OK);

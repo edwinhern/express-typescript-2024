@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { cleanEnv, host, num, port, str } from 'envalid';
+import { bool, cleanEnv, host, num, port, str } from 'envalid';
 
 dotenv.config();
 
@@ -8,6 +8,7 @@ export const env = cleanEnv(process.env, {
   HOST: host(),
   PORT: port(),
   CORS_ORIGIN: str(),
+  CORS_CREDENTIALS: bool(),
   COMMON_RATE_LIMIT_MAX_REQUESTS: num(),
   COMMON_RATE_LIMIT_WINDOW_MS: num(),
 });

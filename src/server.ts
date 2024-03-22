@@ -1,26 +1,26 @@
-import cors from 'cors';
+import 'reflect-metadata';
+
 import express, { Express } from 'express';
 import helmet from 'helmet';
-import path from 'path';
 import { pino } from 'pino';
+import { useExpressServer } from 'routing-controllers';
 
-import { healthCheckRouter } from '@/api/healthCheck/healthCheckRouter';
-import { userRouter } from '@/api/user/userRouter';
-import { openAPIRouter } from '@/api-docs/openAPIRouter';
+import { HealthCheckController } from '@/api/healthCheck/healthCheckRouter';
+import { UserController } from '@/api/user/userRouter';
 import errorHandler from '@/common/middleware/errorHandler';
 import rateLimiter from '@/common/middleware/rateLimiter';
 import requestLogger from '@/common/middleware/requestLogger';
-import { env } from '@/common/utils/envConfig';
+import { env } from '@/config';
 
 class ExpressServer {
   private app: Express;
 
-  constructor() {
+  constructor(Controllers: Function[]) {
     this.app = express();
+
     this.initializeMiddlewares();
-    this.initializeRoutes();
+    this.initializeRoutes(Controllers);
     this.initializeErrorHandling();
-    this.configureAssets();
   }
 
   public getServer() {
@@ -39,7 +39,6 @@ class ExpressServer {
     this.app.set('trust proxy', true);
 
     // General middlewares
-    this.app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
     this.app.use(helmet());
     this.app.use(rateLimiter);
     this.app.use(express.json());
@@ -47,22 +46,22 @@ class ExpressServer {
     this.app.use(requestLogger);
   }
 
-  private initializeRoutes() {
-    this.app.use('/health-check', healthCheckRouter);
-    this.app.use('/users', userRouter);
-    this.app.use(openAPIRouter);
+  private initializeRoutes(controllers: Function[]) {
+    const { CORS_ORIGIN, CORS_CREDENTIALS } = env;
+    useExpressServer(this.app, {
+      routePrefix: '/api',
+      cors: { origin: CORS_ORIGIN, credentials: CORS_CREDENTIALS },
+      controllers: controllers,
+      defaultErrorHandler: false,
+    });
   }
 
   private initializeErrorHandling() {
-    this.app.use(errorHandler());
-  }
-
-  private configureAssets() {
-    this.app.use(express.static(path.join(__dirname, '../public')));
+    this.app.use(errorHandler);
   }
 }
 
 const logger = pino({ name: 'server start' });
-const app = new ExpressServer();
+const app = new ExpressServer([HealthCheckController, UserController]);
 
 export { app, logger };

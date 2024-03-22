@@ -9,10 +9,10 @@ import { app as Application } from '@/server';
 const app = Application.getServer();
 
 describe('User API Endpoints', () => {
-  describe('GET /users', () => {
+  describe('GET /api/users', () => {
     it('should return a list of users', async () => {
       // Act
-      const response = await request(app).get('/users');
+      const response = await request(app).get('/api/users');
       const responseBody: ServiceResponse<User[]> = response.body;
 
       // Assert
@@ -24,14 +24,14 @@ describe('User API Endpoints', () => {
     });
   });
 
-  describe('GET /users/:id', () => {
+  describe('GET /api/users/:id', () => {
     it('should return a user for a valid ID', async () => {
       // Arrange
       const testId = 1;
       const expectedUser = users.find((user) => user.id === testId) as User;
 
       // Act
-      const response = await request(app).get(`/users/${testId}`);
+      const response = await request(app).get(`/api/users/${testId}`);
       const responseBody: ServiceResponse<User> = response.body;
 
       // Assert
@@ -47,7 +47,7 @@ describe('User API Endpoints', () => {
       const testId = Number.MAX_SAFE_INTEGER;
 
       // Act
-      const response = await request(app).get(`/users/${testId}`);
+      const response = await request(app).get(`/api/users/${testId}`);
       const responseBody: ServiceResponse = response.body;
 
       // Assert
@@ -60,13 +60,13 @@ describe('User API Endpoints', () => {
     it('should return a bad request for invalid ID format', async () => {
       // Act
       const invalidInput = 'abc';
-      const response = await request(app).get(`/users/${invalidInput}`);
+      const response = await request(app).get(`/api/users/${invalidInput}`);
       const responseBody: ServiceResponse = response.body;
 
       // Assert
       expect(response.statusCode).toEqual(StatusCodes.BAD_REQUEST);
       expect(responseBody.success).toBeFalsy();
-      expect(responseBody.message).toContain('Invalid input');
+      expect(responseBody.message).toContain('User ID must be a positive number');
       expect(responseBody.responseObject).toBeNull();
     });
   });

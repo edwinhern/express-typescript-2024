@@ -1,44 +1,43 @@
-import { OpenAPIRegistry } from '@asteasolutions/zod-to-openapi';
-import express, { Request, Response, Router } from 'express';
-import { z } from 'zod';
+import { validateOrReject } from 'class-validator';
+import { Request, Response } from 'express';
+import { StatusCodes } from 'http-status-codes';
+import { Controller, Get, HttpCode, Param, Req, Res } from 'routing-controllers';
+import Container from 'typedi';
 
-import { GetUserSchema, UserSchema } from '@/api/user/userModel';
-import { userService } from '@/api/user/userService';
-import { createApiResponse } from '@/api-docs/openAPIResponseBuilders';
-import { handleServiceResponse, validateRequest } from '@/common/utils/httpHandlers';
+import { GetUserSchema } from '@/api/user/userModel';
+import { UserService } from '@/api/user/userService';
+import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse';
+import { handleServiceResponse } from '@/common/utils/httpHandlers';
 
-export const userRegistry = new OpenAPIRegistry();
+@Controller('/users')
+export class UserController {
+  public userService = Container.get(UserService);
 
-userRegistry.register('User', UserSchema);
+  @Get('/')
+  @HttpCode(StatusCodes.OK)
+  @HttpCode(StatusCodes.NOT_FOUND)
+  @HttpCode(StatusCodes.INTERNAL_SERVER_ERROR)
+  async getUsers(@Req() _request: Request, @Res() response: Response) {
+    const serviceResponse = await this.userService.findAll();
+    return handleServiceResponse(serviceResponse, response);
+  }
 
-export const userRouter: Router = (() => {
-  const router = express.Router();
+  @Get('/:id')
+  @HttpCode(StatusCodes.OK)
+  @HttpCode(StatusCodes.NOT_FOUND)
+  @HttpCode(StatusCodes.BAD_REQUEST)
+  @HttpCode(StatusCodes.INTERNAL_SERVER_ERROR)
+  async getUserById(@Param('id') userId: number, @Res() response: Response) {
+    try {
+      const request = new GetUserSchema(Number(userId));
+      await validateOrReject(request);
 
-  userRegistry.registerPath({
-    method: 'get',
-    path: '/users',
-    tags: ['User'],
-    responses: createApiResponse(z.array(UserSchema), 'Success'),
-  });
-
-  router.get('/', async (_req: Request, res: Response) => {
-    const serviceResponse = await userService.findAll();
-    handleServiceResponse(serviceResponse, res);
-  });
-
-  userRegistry.registerPath({
-    method: 'get',
-    path: '/users/{id}',
-    tags: ['User'],
-    request: { params: GetUserSchema.shape.params },
-    responses: createApiResponse(UserSchema, 'Success'),
-  });
-
-  router.get('/:id', validateRequest(GetUserSchema), async (req: Request, res: Response) => {
-    const id = parseInt(req.params.id as string, 10);
-    const serviceResponse = await userService.findById(id);
-    handleServiceResponse(serviceResponse, res);
-  });
-
-  return router;
-})();
+      const serviceResponse = await this.userService.findById(request.id);
+      return handleServiceResponse(serviceResponse, response);
+    } catch (e: any) {
+      const message = Object.values(e[0].constraints)[0] as string;
+      const serviceResponse = new ServiceResponse(ResponseStatus.Failed, message, null, StatusCodes.BAD_REQUEST);
+      return handleServiceResponse(serviceResponse, response);
+    }
+  }
+}
