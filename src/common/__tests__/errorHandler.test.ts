@@ -21,6 +21,14 @@ describe('Error Handler Middleware', () => {
       next(error);
     });
 
+    app.get('/simulate-error-in-handler', (_req, res, next) => {
+      res.status = () => {
+        throw new Error('Simulated error within errorHandler');
+      };
+      const error = new Error('Error that should trigger errorHandler');
+      next(error);
+    });
+
     app.use(errorHandler);
     app.use('*', (_req, res) => res.status(StatusCodes.NOT_FOUND).send('Not Found'));
   });
@@ -54,6 +62,14 @@ describe('Error Handler Middleware', () => {
       const response = await request(app).get('/undefined-error');
       expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
       expect(response.body).toHaveProperty('message', 'An unexpected error occurred');
+    });
+  });
+
+  describe('Handling simulated error within errorHandler', () => {
+    it('forwards error to the next error handler if an error occurs in the errorHandler', async () => {
+      const response = await request(app).get('/simulate-error-in-handler');
+      expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+      expect(response.text).toContain('Simulated error within errorHandler');
     });
   });
 });
