@@ -1,15 +1,13 @@
-import express, { Express } from 'express';
+import express from 'express';
 import { StatusCodes } from 'http-status-codes';
 import request from 'supertest';
 
 import errorHandler from '@/common/middleware/errorHandler';
 
 describe('Error Handler Middleware', () => {
-  let app: Express;
+  const app = express();
 
   beforeAll(() => {
-    app = express();
-
     app.get('/error', () => {
       throw new Error('Test error');
     });
