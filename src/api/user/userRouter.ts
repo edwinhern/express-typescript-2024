@@ -15,8 +15,6 @@ export class UserController {
 
   @Get('/')
   @HttpCode(StatusCodes.OK)
-  @HttpCode(StatusCodes.NOT_FOUND)
-  @HttpCode(StatusCodes.INTERNAL_SERVER_ERROR)
   async getUsers(@Req() _request: Request, @Res() response: Response) {
     const serviceResponse = await this.userService.findAll();
     return handleServiceResponse(serviceResponse, response);
@@ -24,9 +22,6 @@ export class UserController {
 
   @Get('/:id')
   @HttpCode(StatusCodes.OK)
-  @HttpCode(StatusCodes.NOT_FOUND)
-  @HttpCode(StatusCodes.BAD_REQUEST)
-  @HttpCode(StatusCodes.INTERNAL_SERVER_ERROR)
   async getUserById(@Param('id') userId: number, @Res() response: Response) {
     try {
       const request = new GetUserSchema(Number(userId));

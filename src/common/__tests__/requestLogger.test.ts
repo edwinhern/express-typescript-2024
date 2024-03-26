@@ -15,7 +15,7 @@ describe('Request Logger Middleware', () => {
     app.get('/error', () => {
       throw new Error('Test error');
     });
-    app.use(errorHandler());
+    app.use(errorHandler);
   });
 
   describe('Successful requests', () => {

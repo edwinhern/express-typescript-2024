@@ -18,7 +18,7 @@ describe('Error Handler Middleware', () => {
       next(error);
     });
 
-    app.use(errorHandler());
+    app.use(errorHandler);
     app.use('*', (req, res) => res.status(StatusCodes.NOT_FOUND).send('Not Found'));
   });
 
