@@ -18,14 +18,20 @@ describe('Error Handler Middleware', () => {
       next(error);
     });
 
+    app.get('/undefined-error', (_req, _res, next) => {
+      const error = new Error();
+      next(error);
+    });
+
     app.use(errorHandler);
-    app.use('*', (req, res) => res.status(StatusCodes.NOT_FOUND).send('Not Found'));
+    app.use('*', (_req, res) => res.status(StatusCodes.NOT_FOUND).send('Not Found'));
   });
 
   describe('Handling unknown routes', () => {
     it('returns 404 for unknown routes', async () => {
       const response = await request(app).get('/this-route-does-not-exist');
       expect(response.status).toBe(StatusCodes.NOT_FOUND);
+      expect(response.text).toBe('Not Found');
     });
   });
 
@@ -33,6 +39,7 @@ describe('Error Handler Middleware', () => {
     it('handles thrown errors with a 500 status code', async () => {
       const response = await request(app).get('/error');
       expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+      expect(response.body).toHaveProperty('message', 'Test error');
     });
   });
 
@@ -40,6 +47,15 @@ describe('Error Handler Middleware', () => {
     it('handles errors passed to next() with a 500 status code', async () => {
       const response = await request(app).get('/next-error');
       expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+      expect(response.body).toHaveProperty('message', 'Error passed to next()');
+    });
+  });
+
+  describe('Handling errors with undefined messages', () => {
+    it('handles errors without messages with a 500 status code and a default error message', async () => {
+      const response = await request(app).get('/undefined-error');
+      expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+      expect(response.body).toHaveProperty('message', 'An unexpected error occurred');
     });
   });
 });
