@@ -1,25 +1,41 @@
 import 'reflect-metadata';
 
-import express, { Express } from 'express';
+import { defaultMetadataStorage } from 'class-transformer/cjs/storage';
+import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
+import express from 'express';
 import helmet from 'helmet';
 import { pino } from 'pino';
-import { useExpressServer } from 'routing-controllers';
+import { getMetadataArgsStorage, RoutingControllersOptions, useExpressServer } from 'routing-controllers';
+import { routingControllersToSpec } from 'routing-controllers-openapi';
+import swaggerUi from 'swagger-ui-express';
 
-import { HealthCheckController } from '@/api/healthCheck/healthCheckController';
-import { UserController } from '@/api/user/userController';
+import * as controllers from '@/api';
 import errorHandler from '@/common/middleware/errorHandler';
 import rateLimiter from '@/common/middleware/rateLimiter';
 import requestLogger from '@/common/middleware/requestLogger';
 import { env } from '@/config';
 
 class ExpressServer {
-  private app: Express;
+  public static instance = new ExpressServer();
+  public static logger = pino({ name: 'server start' });
 
-  constructor(Controllers: Function[]) {
+  private app: express.Application;
+  private routeControllerOptions: RoutingControllersOptions;
+
+  constructor() {
+    const controllersArr = Object.values(controllers).map((ele) => ele);
+
     this.app = express();
+    this.routeControllerOptions = {
+      controllers: controllersArr,
+      cors: { origin: env.CORS_ORIGIN, credentials: env.CORS_CREDENTIALS },
+      routePrefix: env.ROUTE_PREFIX,
+      defaultErrorHandler: false,
+    };
 
     this.initializeMiddlewares();
-    this.initializeRoutes(Controllers);
+    this.initializeRoutes();
+    this.initializeSwagger();
     this.initializeErrorHandling();
   }
 
@@ -46,14 +62,41 @@ class ExpressServer {
     this.app.use(requestLogger);
   }
 
-  private initializeRoutes(controllers: Function[]) {
-    const { CORS_ORIGIN, CORS_CREDENTIALS } = env;
-    useExpressServer(this.app, {
-      routePrefix: '/api',
-      cors: { origin: CORS_ORIGIN, credentials: CORS_CREDENTIALS },
-      controllers: controllers,
-      defaultErrorHandler: false,
+  private initializeRoutes() {
+    useExpressServer(this.app, this.routeControllerOptions);
+  }
+
+  private initializeSwagger() {
+    const schemas: any = validationMetadatasToSchemas({
+      classTransformerMetadataStorage: defaultMetadataStorage,
+      refPointerPrefix: '#/componentsnpm/schemas/',
     });
+
+    const storage = getMetadataArgsStorage();
+    const spec = routingControllersToSpec(storage, this.routeControllerOptions, {
+      components: {
+        schemas,
+        securitySchemes: {
+          bearerAuth: {
+            type: 'apiKey',
+            scheme: 'bearer',
+            in: 'header',
+            name: 'Authorization',
+          },
+        },
+      },
+      externalDocs: {
+        description: 'View the raw OpenAPI Specification in JSON format',
+        url: '/swagger.json',
+      },
+      info: {
+        title: 'Swagger API',
+        version: '1.0.0',
+      },
+    });
+
+    this.app.get('/swagger.json', (_req, res) => res.send(spec));
+    this.app.use('/', swaggerUi.serve, swaggerUi.setup(spec));
   }
 
   private initializeErrorHandling() {
@@ -62,6 +105,6 @@ class ExpressServer {
 }
 
 const logger = pino({ name: 'server start' });
-const app = new ExpressServer([HealthCheckController, UserController]);
+const app = new ExpressServer();
 
 export { app, logger };

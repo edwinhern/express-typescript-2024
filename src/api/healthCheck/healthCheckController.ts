@@ -7,7 +7,7 @@ import { handleServiceResponse } from '@/common/utils/httpHandlers';
 
 @Controller('/health-check')
 export class HealthCheckController {
-  @Get('/')
+  @Get()
   @HttpCode(StatusCodes.OK)
   checkServiceHealth(@Req() _request: Request, @Res() response: Response) {
     const serviceResponse = new ServiceResponse(ResponseStatus.Success, 'Service is healthy', null, StatusCodes.OK);

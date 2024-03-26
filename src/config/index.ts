@@ -11,4 +11,5 @@ export const env = cleanEnv(process.env, {
   CORS_CREDENTIALS: bool(),
   COMMON_RATE_LIMIT_MAX_REQUESTS: num(),
   COMMON_RATE_LIMIT_WINDOW_MS: num(),
+  ROUTE_PREFIX: str(),
 });
