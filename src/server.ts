@@ -5,8 +5,8 @@ import helmet from 'helmet';
 import { pino } from 'pino';
 import { useExpressServer } from 'routing-controllers';
 
-import { HealthCheckController } from '@/api/healthCheck/healthCheckRouter';
-import { UserController } from '@/api/user/userRouter';
+import { HealthCheckController } from '@/api/healthCheck/healthCheckController';
+import { UserController } from '@/api/user/userController';
 import errorHandler from '@/common/middleware/errorHandler';
 import rateLimiter from '@/common/middleware/rateLimiter';
 import requestLogger from '@/common/middleware/requestLogger';

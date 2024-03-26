@@ -20,6 +20,7 @@ export class UserController {
     return handleServiceResponse(serviceResponse, response);
   }
 
+  // TODO: Create Validation helper function to handle Request validations
   @Get('/:id')
   @HttpCode(StatusCodes.OK)
   async getUserById(@Param('id') userId: number, @Res() response: Response) {
