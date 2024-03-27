@@ -1,15 +1,18 @@
 import { StatusCodes } from 'http-status-codes';
+import Container, { Service } from 'typedi';
 
 import { User } from '@/api/user/userModel';
-import { userRepository } from '@/api/user/userRepository';
+import { UserRepository } from '@/api/user/userRepository';
 import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse';
 import { logger } from '@/server';
 
-export const userService = {
-  // Retrieves all users from the database
-  findAll: async (): Promise<ServiceResponse<User[] | null>> => {
+@Service()
+export class UserService {
+  private userRepository = Container.get(UserRepository);
+
+  async findAll(): Promise<ServiceResponse<User[] | null>> {
     try {
-      const users = await userRepository.findAllAsync();
+      const users = await this.userRepository.findAllAsync();
       if (!users) {
         return new ServiceResponse(ResponseStatus.Failed, 'No Users found', null, StatusCodes.NOT_FOUND);
       }
@@ -19,12 +22,11 @@ export const userService = {
       logger.error(errorMessage);
       return new ServiceResponse(ResponseStatus.Failed, errorMessage, null, StatusCodes.INTERNAL_SERVER_ERROR);
     }
-  },
+  }
 
-  // Retrieves a single user by their ID
-  findById: async (id: number): Promise<ServiceResponse<User | null>> => {
+  async findById(id: number): Promise<ServiceResponse<User | null>> {
     try {
-      const user = await userRepository.findByIdAsync(id);
+      const user = await this.userRepository.findByIdAsync(id);
       if (!user) {
         return new ServiceResponse(ResponseStatus.Failed, 'User not found', null, StatusCodes.NOT_FOUND);
       }
@@ -34,5 +36,5 @@ export const userService = {
       logger.error(errorMessage);
       return new ServiceResponse(ResponseStatus.Failed, errorMessage, null, StatusCodes.INTERNAL_SERVER_ERROR);
     }
-  },
-};
+  }
+}

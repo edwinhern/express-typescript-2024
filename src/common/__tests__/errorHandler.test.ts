@@ -1,15 +1,13 @@
-import express, { Express } from 'express';
+import express from 'express';
 import { StatusCodes } from 'http-status-codes';
 import request from 'supertest';
 
 import errorHandler from '@/common/middleware/errorHandler';
 
 describe('Error Handler Middleware', () => {
-  let app: Express;
+  const app = express();
 
   beforeAll(() => {
-    app = express();
-
     app.get('/error', () => {
       throw new Error('Test error');
     });
@@ -18,14 +16,28 @@ describe('Error Handler Middleware', () => {
       next(error);
     });
 
-    app.use(errorHandler());
-    app.use('*', (req, res) => res.status(StatusCodes.NOT_FOUND).send('Not Found'));
+    app.get('/undefined-error', (_req, _res, next) => {
+      const error = new Error();
+      next(error);
+    });
+
+    app.get('/simulate-error-in-handler', (_req, res, next) => {
+      res.status = () => {
+        throw new Error('Simulated error within errorHandler');
+      };
+      const error = new Error('Error that should trigger errorHandler');
+      next(error);
+    });
+
+    app.use(errorHandler);
+    app.use('*', (_req, res) => res.status(StatusCodes.NOT_FOUND).send('Not Found'));
   });
 
   describe('Handling unknown routes', () => {
     it('returns 404 for unknown routes', async () => {
       const response = await request(app).get('/this-route-does-not-exist');
       expect(response.status).toBe(StatusCodes.NOT_FOUND);
+      expect(response.text).toBe('Not Found');
     });
   });
 
@@ -33,6 +45,7 @@ describe('Error Handler Middleware', () => {
     it('handles thrown errors with a 500 status code', async () => {
       const response = await request(app).get('/error');
       expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+      expect(response.body).toHaveProperty('message', 'Test error');
     });
   });
 
@@ -40,6 +53,23 @@ describe('Error Handler Middleware', () => {
     it('handles errors passed to next() with a 500 status code', async () => {
       const response = await request(app).get('/next-error');
       expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+      expect(response.body).toHaveProperty('message', 'Error passed to next()');
+    });
+  });
+
+  describe('Handling errors with undefined messages', () => {
+    it('handles errors without messages with a 500 status code and a default error message', async () => {
+      const response = await request(app).get('/undefined-error');
+      expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+      expect(response.body).toHaveProperty('message', 'An unexpected error occurred');
+    });
+  });
+
+  describe('Handling simulated error within errorHandler', () => {
+    it('forwards error to the next error handler if an error occurs in the errorHandler', async () => {
+      const response = await request(app).get('/simulate-error-in-handler');
+      expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+      expect(response.text).toContain('Simulated error within errorHandler');
     });
   });
 });

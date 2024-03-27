@@ -1,38 +1,55 @@
-import cors from 'cors';
-import express, { Express } from 'express';
-import helmet from 'helmet';
+import 'reflect-metadata';
+
+import express, { Application } from 'express';
 import { pino } from 'pino';
+import { useExpressServer } from 'routing-controllers';
 
-import { healthCheckRouter } from '@/api/healthCheck/healthCheckRouter';
-import { userRouter } from '@/api/user/userRouter';
-import { openAPIRouter } from '@/api-docs/openAPIRouter';
+import initializeMiddlewares from '@/common/middleware';
 import errorHandler from '@/common/middleware/errorHandler';
-import rateLimiter from '@/common/middleware/rateLimiter';
-import requestLogger from '@/common/middleware/requestLogger';
-import { env } from '@/common/utils/envConfig';
+import loadControllers from '@/common/utils/controllerLoader';
+import { env } from '@/config';
+import initializeSwagger from '@/config/swaggerSetup';
 
-const logger = pino({ name: 'server start' });
-const app: Express = express();
+class ExpressServer {
+  public static logger = pino({ name: 'ServerStart' });
+  public app: Application;
 
-// Set the application to trust the reverse proxy
-app.set('trust proxy', true);
+  constructor() {
+    this.app = express();
+    this.initializeMiddlewares();
+    this.initializeRoutes();
+    this.initializeSwagger();
+    this.initializeErrorHandling();
+  }
 
-// Middlewares
-app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
-app.use(helmet());
-app.use(rateLimiter);
+  private initializeMiddlewares() {
+    initializeMiddlewares(this.app);
+  }
 
-// Request logging
-app.use(requestLogger());
+  private async initializeRoutes() {
+    useExpressServer(this.app, {
+      controllers: await loadControllers(),
+      cors: { origin: env.CORS_ORIGIN, credentials: env.CORS_CREDENTIALS },
+      routePrefix: env.ROUTE_PREFIX,
+      defaultErrorHandler: false,
+    });
+  }
 
-// Routes
-app.use('/health-check', healthCheckRouter);
-app.use('/users', userRouter);
+  private initializeSwagger() {
+    initializeSwagger(this.app);
+  }
 
-// Swagger UI
-app.use(openAPIRouter);
+  private initializeErrorHandling() {
+    this.app.use(errorHandler);
+  }
 
-// Error handlers
-app.use(errorHandler());
+  public start() {
+    return this.app.listen(env.PORT, () => {
+      const { NODE_ENV, HOST, PORT } = env;
+      ExpressServer.logger.info(`🚀 Server (${NODE_ENV}) running on port http://${HOST}:${PORT}`);
+    });
+  }
+}
 
-export { app, logger };
+export const server = new ExpressServer();
+export const logger = ExpressServer.logger;

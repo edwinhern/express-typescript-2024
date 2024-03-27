@@ -9,13 +9,13 @@ describe('Request Logger Middleware', () => {
   const app = express();
 
   beforeAll(() => {
-    app.use(requestLogger());
+    app.use(requestLogger);
     app.get('/success', (req, res) => res.status(StatusCodes.OK).send('Success'));
     app.get('/redirect', (req, res) => res.redirect('/success'));
     app.get('/error', () => {
       throw new Error('Test error');
     });
-    app.use(errorHandler());
+    app.use(errorHandler);
   });
 
   describe('Successful requests', () => {

@@ -1,13 +1,16 @@
-import { ErrorRequestHandler, RequestHandler } from 'express';
+import { ErrorRequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-const unexpectedRequest: RequestHandler = (_req, res) => {
-  res.sendStatus(StatusCodes.NOT_FOUND);
+const errorHandler: ErrorRequestHandler = (err, _req, res, next) => {
+  try {
+    const statusCode: number = err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
+    const message: string = err.message || 'An unexpected error occurred';
+
+    res.locals.err = err;
+    res.status(statusCode).json({ message });
+  } catch (error) {
+    next(error);
+  }
 };
 
-const addErrorToRequestLog: ErrorRequestHandler = (err, _req, res, next) => {
-  res.locals.err = err;
-  next(err);
-};
-
-export default () => [unexpectedRequest, addErrorToRequestLog];
+export default errorHandler;

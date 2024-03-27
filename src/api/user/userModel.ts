@@ -1,21 +1,17 @@
-import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
-import { z } from 'zod';
+import { Type } from 'class-transformer';
+import { IsPositive } from 'class-validator';
 
-import { commonValidations } from '@/common/utils/commonValidation';
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-extendZodWithOpenApi(z);
-
-export type User = z.infer<typeof UserSchema>;
-export const UserSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  email: z.string().email(),
-  age: z.number(),
-  createdAt: z.date(),
-  updatedAt: z.date(),
-});
-
-// Input Validation for 'GET users/:id' endpoint
-export const GetUserSchema = z.object({
-  params: z.object({ id: commonValidations.id }),
-});
+export class GetUserSchema {
+  @Type(() => Number)
+  @IsPositive({ message: 'User ID must be a positive number' })
+  public id!: number;
+}

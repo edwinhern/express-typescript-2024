@@ -1,3 +1,5 @@
+import { Service } from 'typedi';
+
 import { User } from '@/api/user/userModel';
 
 export const users: User[] = [
@@ -5,12 +7,13 @@ export const users: User[] = [
   { id: 2, name: 'Bob', email: 'bob@example.com', age: 21, createdAt: new Date(), updatedAt: new Date() },
 ];
 
-export const userRepository = {
-  findAllAsync: async (): Promise<User[]> => {
+@Service()
+export class UserRepository {
+  async findAllAsync() {
     return users;
-  },
+  }
 
-  findByIdAsync: async (id: number): Promise<User | null> => {
+  async findByIdAsync(id: number) {
     return users.find((user) => user.id === id) || null;
-  },
-};
+  }
+}
