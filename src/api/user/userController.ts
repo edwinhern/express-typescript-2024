@@ -8,8 +8,8 @@ import { UserService } from '@/api/user/userService';
 import { handleServiceResponse, validationMiddleware } from '@/common/utils/httpHandlers';
 
 @Controller('/users')
-export class UserController {
-  public userService = Container.get(UserService);
+export default class UserController {
+  private userService = Container.get(UserService);
 
   @Get()
   @HttpCode(StatusCodes.OK)

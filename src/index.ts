@@ -1,14 +1,18 @@
-import { app, logger } from '@/server';
+import { logger, server } from '@/server';
 
-const server = app.start();
+const serverInstance = server.start();
 
 const onCloseSignal = () => {
   logger.info('sigint received, shutting down');
-  server.close(() => {
+  serverInstance.close(() => {
     logger.info('server closed');
     process.exit();
   });
-  setTimeout(() => process.exit(1), 10000).unref(); // Force shutdown after 10s
+
+  setTimeout(() => {
+    logger.warn('Forced shutdown');
+    process.exit(1); // Forced exit
+  }, 10000).unref(); // Unref to not block event loop
 };
 
 process.on('SIGINT', onCloseSignal);

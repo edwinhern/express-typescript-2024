@@ -9,11 +9,11 @@ export const users: User[] = [
 
 @Service()
 export class UserRepository {
-  public async findAllAsync(): Promise<User[]> {
+  async findAllAsync() {
     return users;
   }
 
-  public async findByIdAsync(id: number): Promise<User | null> {
+  async findByIdAsync(id: number) {
     return users.find((user) => user.id === id) || null;
   }
 }

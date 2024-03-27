@@ -6,7 +6,7 @@ import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse
 import { handleServiceResponse } from '@/common/utils/httpHandlers';
 
 @Controller('/health-check')
-export class HealthCheckController {
+export default class HealthCheckController {
   @Get()
   @HttpCode(StatusCodes.OK)
   checkServiceHealth(@Req() _request: Request, @Res() response: Response) {

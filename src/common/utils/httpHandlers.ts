@@ -4,6 +4,7 @@ import { NextFunction, Request, RequestHandler, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
 import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse';
+
 export const handleServiceResponse = (serviceResponse: ServiceResponse<any>, response: Response) => {
   return response.status(serviceResponse.statusCode).send(serviceResponse);
 };

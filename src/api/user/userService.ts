@@ -8,10 +8,9 @@ import { logger } from '@/server';
 
 @Service()
 export class UserService {
-  public userRepository = Container.get(UserRepository);
+  private userRepository = Container.get(UserRepository);
 
-  // Retrieves all users from the database
-  public async findAll(): Promise<ServiceResponse<User[] | null>> {
+  async findAll(): Promise<ServiceResponse<User[] | null>> {
     try {
       const users = await this.userRepository.findAllAsync();
       if (!users) {
@@ -25,8 +24,7 @@ export class UserService {
     }
   }
 
-  // Retrieves a single user by their ID
-  public async findById(id: number): Promise<ServiceResponse<User | null>> {
+  async findById(id: number): Promise<ServiceResponse<User | null>> {
     try {
       const user = await this.userRepository.findByIdAsync(id);
       if (!user) {
