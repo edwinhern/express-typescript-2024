@@ -1,3 +1,5 @@
+## [1.2.19](https://github.com/edwinhern/express-typescript-2024/compare/1.2.18...1.2.19) (2024-04-09)
+
 ## 1.2.18 (2024-04-09)
 
 ## 1.2.17 (2024-04-09)
