@@ -73,6 +73,8 @@ Developed to streamline backend development, this boilerplate is your solution f
 │       ├── userRouter.ts
 │       └── userService.ts
 ├── api-docs
+│   ├── __tests__
+│   │   └── openAPIRouter.test.ts
 │   ├── openAPIDocumentGenerator.ts
 │   ├── openAPIResponseBuilders.ts
 │   └── openAPIRouter.ts
