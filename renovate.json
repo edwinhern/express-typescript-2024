@@ -14,12 +14,16 @@
       "automerge": true
     },
     {
+      "packagePatterns": ["@types", "typescript"],
+      "groupName": "typescript"
+    },
+    {
       "packagePatterns": ["eslint"],
       "groupName": "eslint"
     },
     {
-      "packagePatterns": ["react"],
-      "groupName": "react"
+      "packagePatterns": ["semantic-release"],
+      "groupName": "semantic-release"
     },
     {
       "packagePatterns": ["@vitest", "vitest"],
