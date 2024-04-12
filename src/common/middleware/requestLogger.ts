@@ -20,7 +20,7 @@ enum LogLevel {
 type PinoCustomProps = {
   request: Request;
   response: Response;
-  err: Error;
+  error: Error;
   responseBody: unknown;
 };
 
@@ -50,7 +50,7 @@ const customAttributeKeys: CustomAttributeKeys = {
 const customProps = (req: Request, res: Response): PinoCustomProps => ({
   request: req,
   response: res,
-  err: res.locals.err,
+  error: res.locals.err,
   responseBody: res.locals.responseBody,
 });
 
@@ -87,4 +87,4 @@ const genReqId = (req: IncomingMessage, res: ServerResponse<IncomingMessage>) =>
   return id;
 };
 
-export default requestLogger;
+export default requestLogger();

@@ -1,6 +1,6 @@
 # 🚀 Express TypeScript Boilerplate 2024
 
-[![Build Express+Typescript Application](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml)
+[![Build Express Application](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml)
 [![CodeQL](https://github.com/edwinhern/express-typescript-2024/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/codeql.yml)
 [![Docker Image CI](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml)
 [![Release](https://github.com/edwinhern/express-typescript-2024/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/release.yml)
@@ -73,6 +73,8 @@ Developed to streamline backend development, this boilerplate is your solution f
 │       ├── userRouter.ts
 │       └── userService.ts
 ├── api-docs
+│   ├── __tests__
+│   │   └── openAPIRouter.test.ts
 │   ├── openAPIDocumentGenerator.ts
 │   ├── openAPIResponseBuilders.ts
 │   └── openAPIRouter.ts

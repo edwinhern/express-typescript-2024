@@ -1,0 +1,37 @@
+{
+  "extends": ["config:recommended"],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "labels": ["type: dependencies"],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "automerge": true
+    },
+    {
+      "packagePatterns": ["@types", "typescript"],
+      "groupName": "typescript"
+    },
+    {
+      "packagePatterns": ["eslint"],
+      "groupName": "eslint"
+    },
+    {
+      "packagePatterns": ["semantic-release"],
+      "groupName": "semantic-release"
+    },
+    {
+      "packagePatterns": ["@vitest", "vitest"],
+      "groupName": "vitest"
+    }
+  ],
+  "dependencyDashboard": true,
+  "lockFileMaintenance": {
+    "enabled": true
+  }
+}

@@ -3,6 +3,7 @@
   "version": "1.2.19",
   "description": "An Express boilerplate backend",
   "main": "index.ts",
+  "private": true,
   "scripts": {
     "dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
     "build": "rimraf dist && tsup",
@@ -14,8 +15,8 @@
     "test": "vitest run",
     "test:dev": "vitest dev",
     "test:cov": "vitest run --coverage",
-    "prepare": "husky",
-    "release": "release-it"
+    "release": "semantic-release",
+    "prepare": "husky"
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^7.0.0",
@@ -33,7 +34,9 @@
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
-    "@release-it/conventional-changelog": "^8.0.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.3",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/supertest": "^6.0.2",
@@ -49,8 +52,8 @@
     "lint-staged": "^15.2.2",
     "pino-pretty": "^11.0.0",
     "prettier": "^3.2.5",
-    "release-it": "^17.1.1",
     "rimraf": "^5.0.5",
+    "semantic-release": "^23.0.8",
     "supertest": "^6.3.4",
     "tsup": "^8.0.2",
     "tsx": "^4.7.2",

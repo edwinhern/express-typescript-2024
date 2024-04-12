@@ -23,7 +23,7 @@ app.use(helmet());
 app.use(rateLimiter);
 
 // Request logging
-app.use(requestLogger());
+app.use(requestLogger);
 
 // Routes
 app.use('/health-check', healthCheckRouter);
