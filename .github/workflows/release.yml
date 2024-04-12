@@ -6,34 +6,27 @@ on:
 
 jobs:
   release:
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set Git User
-        uses: git-actions/set-user@v1
-
-      - name: Read .nvmrc
-        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
-
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          fetch-depth: 0
+
+      - name: Use the latest stable Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'node'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Set up .env for tests
-        run: cp .env.template .env
-
-      - name: Run Release
-        run: npm run release --ci
+      - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_Token }}
-
-      - name: End message
-        run: echo "All done!"
+        run: npx semantic-release
