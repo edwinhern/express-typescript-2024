@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/edwinhern/express-typescript-2024/compare/v1.0.3...v1.0.4) (2024-04-23)
+
+### Bug Fixes
+
+- **deps:** update dependency zod to v3.23.4 ([50934cf](https://github.com/edwinhern/express-typescript-2024/commit/50934cfe13fbad1833b979d6ba8a61ba7ac9edef))
+
 ## [1.0.3](https://github.com/edwinhern/express-typescript-2024/compare/v1.0.2...v1.0.3) (2024-04-23)
 
 ### Bug Fixes
