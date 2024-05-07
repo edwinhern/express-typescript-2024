@@ -1,3 +1,9 @@
+## [1.0.7](https://github.com/edwinhern/express-typescript-2024/compare/v1.0.6...v1.0.7) (2024-05-07)
+
+### Bug Fixes
+
+- **deps:** update dependency pino-http to v10 ([#141](https://github.com/edwinhern/express-typescript-2024/issues/141)) ([66acd02](https://github.com/edwinhern/express-typescript-2024/commit/66acd02225689ded17e947a04395a1725498c9f2))
+
 ## [1.0.6](https://github.com/edwinhern/express-typescript-2024/compare/v1.0.5...v1.0.6) (2024-05-03)
 
 ### Bug Fixes
