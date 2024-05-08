@@ -1,3 +1,9 @@
+## [1.0.8](https://github.com/edwinhern/express-typescript-2024/compare/v1.0.7...v1.0.8) (2024-05-08)
+
+### Bug Fixes
+
+- **deps:** update all non-major dependencies ([57df66e](https://github.com/edwinhern/express-typescript-2024/commit/57df66eb7faa9d3f5b36519d2b1d74274d5107a4))
+
 ## [1.0.7](https://github.com/edwinhern/express-typescript-2024/compare/v1.0.6...v1.0.7) (2024-05-07)
 
 ### Bug Fixes
