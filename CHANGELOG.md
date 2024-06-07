@@ -1,3 +1,9 @@
+## [1.0.11](https://github.com/edwinhern/express-typescript-2024/compare/v1.0.10...v1.0.11) (2024-06-07)
+
+### Bug Fixes
+
+- **deps:** update dependency express-rate-limit to v7.3.1 ([f0a093d](https://github.com/edwinhern/express-typescript-2024/commit/f0a093dc91ed6d18d85dc7243ca7be1410a7afb0))
+
 ## [1.0.10](https://github.com/edwinhern/express-typescript-2024/compare/v1.0.9...v1.0.10) (2024-06-01)
 
 ### Bug Fixes
