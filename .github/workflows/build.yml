@@ -2,9 +2,9 @@ name: Build Express Application
 
 on:
   push:
-    branches: [master]  # Ensure consistency in branch naming.
+    branches: [master]
   pull_request:
-    branches: [master]  # Run checks on pull requests targeting the 'master' branch.
+    branches: [master]
 
 jobs:
   build:
