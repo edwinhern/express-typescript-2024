@@ -1,6 +1,6 @@
 {
   "name": "express-typescript-boilerplate",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "An Express boilerplate backend",
   "main": "index.ts",
   "private": true,

@@ -1,3 +1,9 @@
+## [1.0.12](https://github.com/edwinhern/express-typescript-2024/compare/v1.0.11...v1.0.12) (2024-06-17)
+
+### Bug Fixes
+
+- **deps:** update dependency @asteasolutions/zod-to-openapi to v7.1.0 ([39ee8b7](https://github.com/edwinhern/express-typescript-2024/commit/39ee8b78da51b6bf7d87313a6db3f4860fc8a1ff))
+
 ## [1.0.11](https://github.com/edwinhern/express-typescript-2024/compare/v1.0.10...v1.0.11) (2024-06-07)
 
 ### Bug Fixes
