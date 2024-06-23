@@ -4,6 +4,7 @@ on:
   push:
     branches: ['master']
   pull_request:
+    branches: ['master']
 
 jobs:
   build:
@@ -12,26 +13,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Login step only executed for pushes to main
       - name: Login to GitHub Container Registry
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/master'
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GH_Token }}
 
-      # Build step with dynamic tagging
       - name: Build the Docker image
         run: |
           docker build . --file Dockerfile --tag ghcr.io/${{ github.repository }}:${{ github.sha }}
-          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+          if [ "${{ github.ref }}" == "refs/heads/master" ]; then
             docker tag ghcr.io/${{ github.repository }}:${{ github.sha }} ghcr.io/${{ github.repository }}:latest
           fi
 
-      # Push step only executed for pushes to main
       - name: Push the Docker image
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/master'
         run: |
           docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
           docker push ghcr.io/${{ github.repository }}:latest
