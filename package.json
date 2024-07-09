@@ -52,7 +52,7 @@
     "lint-staged": "^15.2.2",
     "pino-pretty": "^11.0.0",
     "prettier": "^3.2.5",
-    "rimraf": "^5.0.5",
+    "rimraf": "^6.0.0",
     "semantic-release": "^24.0.0",
     "supertest": "^7.0.0",
     "tsup": "^8.0.2",
