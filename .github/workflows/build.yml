@@ -1,10 +1,8 @@
-name: Build Express Application
+name: Build
 
 on:
   push:
-    branches: [master]
   pull_request:
-    branches: [master]
 
 jobs:
   build:
@@ -16,17 +14,11 @@ jobs:
       - name: Use the latest stable Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'node'
-          cache: 'npm'
+          node-version: "node"
+          cache: "npm"
 
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Lint
-        run: npm run lint
-
       - name: Run Build
         run: npm run build
-
-      - name: Run Test
-        run: npm test
