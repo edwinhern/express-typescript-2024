@@ -1,21 +1,25 @@
+import { StatusCodes } from "http-status-codes";
 import { z } from "zod";
 
-export enum ResponseStatus {
-  Success = 0,
-  Failed = 1,
-}
-
 export class ServiceResponse<T = null> {
-  success: boolean;
-  message: string;
-  responseObject: T;
-  statusCode: number;
+  readonly success: boolean;
+  readonly message: string;
+  readonly responseObject: T;
+  readonly statusCode: number;
 
-  constructor(status: ResponseStatus, message: string, responseObject: T, statusCode: number) {
-    this.success = status === ResponseStatus.Success;
+  private constructor(success: boolean, message: string, responseObject: T, statusCode: number) {
+    this.success = success;
     this.message = message;
     this.responseObject = responseObject;
     this.statusCode = statusCode;
+  }
+
+  static success<T>(message: string, responseObject: T, statusCode: number = StatusCodes.OK) {
+    return new ServiceResponse(true, message, responseObject, statusCode);
+  }
+
+  static failure<T>(message: string, responseObject: T, statusCode: number = StatusCodes.BAD_REQUEST) {
+    return new ServiceResponse(false, message, responseObject, statusCode);
   }
 }
 

@@ -1,16 +1,30 @@
 import type { User } from "@/api/user/userModel";
 
 export const users: User[] = [
-  { id: 1, name: "Alice", email: "alice@example.com", age: 42, createdAt: new Date(), updatedAt: new Date() },
-  { id: 2, name: "Bob", email: "bob@example.com", age: 21, createdAt: new Date(), updatedAt: new Date() },
+  {
+    id: 1,
+    name: "Alice",
+    email: "alice@example.com",
+    age: 42,
+    createdAt: new Date(),
+    updatedAt: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000), // 5 days later
+  },
+  {
+    id: 2,
+    name: "Robert",
+    email: "Robert@example.com",
+    age: 21,
+    createdAt: new Date(),
+    updatedAt: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000), // 5 days later
+  },
 ];
 
-export const userRepository = {
-  findAllAsync: async (): Promise<User[]> => {
+export class userRepository {
+  async findAllAsync(): Promise<User[]> {
     return users;
-  },
+  }
 
-  findByIdAsync: async (id: number): Promise<User | null> => {
+  async findByIdAsync(id: number): Promise<User | null> {
     return users.find((user) => user.id === id) || null;
-  },
-};
+  }
+}
