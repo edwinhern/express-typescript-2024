@@ -1,0 +1,18 @@
+{
+  "name": "tsx",
+  "type": "node",
+  "request": "launch",
+  "program": "${workspaceFolder}/src/index.ts",
+  "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/tsx",
+  "console": "integratedTerminal",
+  "internalConsoleOptions": "neverOpen",
+  "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"],
+  "configurations": [
+    {
+      "command": "npm start",
+      "name": "Run npm start",
+      "request": "launch",
+      "type": "node-terminal"
+    }
+  ]
+}

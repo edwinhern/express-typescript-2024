@@ -4,7 +4,7 @@
   "description": "An Express boilerplate backend",
   "author": "Edwin Hernandez",
   "repository": "edwinhern/express-typescript-2024",
-  "license": "ISC",
+  "license": "MIT",
   "main": "index.ts",
   "private": true,
   "scripts": {
