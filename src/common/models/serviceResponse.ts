@@ -1,8 +1,8 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export enum ResponseStatus {
-  Success,
-  Failed,
+  Success = 0,
+  Failed = 1,
 }
 
 export class ServiceResponse<T = null> {

@@ -23,12 +23,12 @@ Developed to streamline backend development, this boilerplate is your solution f
 - 🌐 Stable Node Environment: Latest LTS Node version in .nvmrc.
 - 🔧 Simplified Environment Variables with Envalid: Centralized and easy-to-manage configuration.
 - 🔗 Path Aliases: Cleaner code with shortcut imports.
-- 🔄 Dependabot Integration: Automatic updates for secure and up-to-date dependencies.
+- 🔄 Renovate Integration: Automatic updates for secure and up-to-date dependencies.
 - 🔒 Security: Helmet for HTTP header security and CORS setup.
 - 📊 Logging: Efficient logging with pino-http.
 - 🧪 Comprehensive Testing: Robust setup with Vitest and Supertest.
 - 🔑 Code Quality Assurance: Husky and lint-staged for consistent quality.
-- ✅ Unified Code Style: ESLint and Prettier for a consistent coding standard.
+- ✅ Unified Code Style: Biomejs for a consistent coding standard.
 - 📃 API Response Standardization: ServiceResponse class for consistent API responses.
 - 🐳 Docker Support: Ready for containerization and deployment.
 - 📝 Input Validation with Zod: Strongly typed request validation using Zod.
