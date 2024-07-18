@@ -11,6 +11,5 @@
       "url": "https://cdn.jsdelivr.net/npm/tsup/schema.json",
       "fileMatch": ["package.json", "tsup.config.json"]
     }
-  ],
-  "css.lint.unknownAtRules": "ignore"
+  ]
 }
