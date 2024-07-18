@@ -3,16 +3,12 @@ import swaggerUi from "swagger-ui-express";
 
 import { generateOpenAPIDocument } from "@/api-docs/openAPIDocumentGenerator";
 
-export const openAPIRouter: Router = (() => {
-  const router = express.Router();
-  const openAPIDocument = generateOpenAPIDocument();
+export const openAPIRouter: Router = express.Router();
+const openAPIDocument = generateOpenAPIDocument();
 
-  router.get("/swagger.json", (_req: Request, res: Response) => {
-    res.setHeader("Content-Type", "application/json");
-    res.send(openAPIDocument);
-  });
+openAPIRouter.get("/swagger.json", (_req: Request, res: Response) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(openAPIDocument);
+});
 
-  router.use("/", swaggerUi.serve, swaggerUi.setup(openAPIDocument));
-
-  return router;
-})();
+openAPIRouter.use("/", swaggerUi.serve, swaggerUi.setup(openAPIDocument));
