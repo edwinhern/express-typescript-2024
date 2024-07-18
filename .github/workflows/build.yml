@@ -16,7 +16,7 @@ jobs:
       - name: Use the latest stable Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "node"
+          node-version: v22.4.x
           cache: "npm"
 
       - name: Install Dependencies
