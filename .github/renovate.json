@@ -1,0 +1,37 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "customManagers:biomeVersions"],
+  "labels": ["chore: dependencies"],
+  "dependencyDashboard": true,
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "automerge": true
+    },
+    {
+      "matchPackageNames": ["@biomejs/biome"],
+      "groupName": "biome",
+      "groupSlug": "biome",
+      "automerge": true
+    },
+    {
+      "matchPackageNames": ["@commitlint/cli", "@commitlint/config-conventional"],
+      "groupName": "commitlint",
+      "groupSlug": "commitlint",
+      "automerge": true
+    },
+    {
+      "packagePatterns": ["@types", "typescript"],
+      "groupName": "typescript"
+    },
+    {
+      "packagePatterns": ["@vitest", "vitest"],
+      "groupName": "vitest"
+    }
+  ]
+}

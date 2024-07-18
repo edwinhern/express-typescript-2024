@@ -1,38 +1,50 @@
-import { StatusCodes } from 'http-status-codes';
+import { StatusCodes } from "http-status-codes";
 
-import { User } from '@/api/user/userModel';
-import { userRepository } from '@/api/user/userRepository';
-import { ResponseStatus, ServiceResponse } from '@/common/models/serviceResponse';
-import { logger } from '@/server';
+import type { User } from "@/api/user/userModel";
+import { userRepository } from "@/api/user/userRepository";
+import { ServiceResponse } from "@/common/models/serviceResponse";
+import { logger } from "@/server";
 
-export const userService = {
+export class userService {
+  private userRepository: userRepository;
+
+  constructor(repository: userRepository = new userRepository()) {
+    this.userRepository = repository;
+  }
+
   // Retrieves all users from the database
-  findAll: async (): Promise<ServiceResponse<User[] | null>> => {
+  async findAll(): Promise<ServiceResponse<User[] | null>> {
     try {
-      const users = await userRepository.findAllAsync();
-      if (!users) {
-        return new ServiceResponse(ResponseStatus.Failed, 'No Users found', null, StatusCodes.NOT_FOUND);
+      const users = await this.userRepository.findAllAsync();
+      if (!users || users.length === 0) {
+        return ServiceResponse.failure("No Users found", null, StatusCodes.NOT_FOUND);
       }
-      return new ServiceResponse<User[]>(ResponseStatus.Success, 'Users found', users, StatusCodes.OK);
+      return ServiceResponse.success<User[]>("Users found", users);
     } catch (ex) {
       const errorMessage = `Error finding all users: $${(ex as Error).message}`;
       logger.error(errorMessage);
-      return new ServiceResponse(ResponseStatus.Failed, errorMessage, null, StatusCodes.INTERNAL_SERVER_ERROR);
+      return ServiceResponse.failure(
+        "An error occurred while retrieving users.",
+        null,
+        StatusCodes.INTERNAL_SERVER_ERROR,
+      );
     }
-  },
+  }
 
   // Retrieves a single user by their ID
-  findById: async (id: number): Promise<ServiceResponse<User | null>> => {
+  async findById(id: number): Promise<ServiceResponse<User | null>> {
     try {
-      const user = await userRepository.findByIdAsync(id);
+      const user = await this.userRepository.findByIdAsync(id);
       if (!user) {
-        return new ServiceResponse(ResponseStatus.Failed, 'User not found', null, StatusCodes.NOT_FOUND);
+        return ServiceResponse.failure("User not found", null, StatusCodes.NOT_FOUND);
       }
-      return new ServiceResponse<User>(ResponseStatus.Success, 'User found', user, StatusCodes.OK);
+      return ServiceResponse.success<User>("User found", user);
     } catch (ex) {
       const errorMessage = `Error finding user with id ${id}:, ${(ex as Error).message}`;
       logger.error(errorMessage);
-      return new ServiceResponse(ResponseStatus.Failed, errorMessage, null, StatusCodes.INTERNAL_SERVER_ERROR);
+      return ServiceResponse.failure("An error occurred while finding user.", null, StatusCodes.INTERNAL_SERVER_ERROR);
     }
-  },
-};
+  }
+}
+
+export const userServiceInstance = new userService();

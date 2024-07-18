@@ -1,9 +1,9 @@
 # 🚀 Express TypeScript Boilerplate 2024
 
-[![Build Express Application](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml)
-[![CodeQL](https://github.com/edwinhern/express-typescript-2024/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/codeql.yml)
-[![Docker Image CI](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml)
-[![Release](https://github.com/edwinhern/express-typescript-2024/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/release.yml)
+[![Build](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml)
+[![Test](https://github.com/edwinhern/express-typescript-2024/actions/workflows/test.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/test.yml)
+[![Code Quality](https://github.com/edwinhern/express-typescript-2024/actions/workflows/code-quality.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/code-quality.yml)
+[![Docker Image CI](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml)
 
 ## 🌟 Introduction
 
@@ -25,12 +25,12 @@ Developed to streamline backend development, this boilerplate is your solution f
 - 🌐 Stable Node Environment: Latest LTS Node version in .nvmrc.
 - 🔧 Simplified Environment Variables with Envalid: Centralized and easy-to-manage configuration.
 - 🔗 Path Aliases: Cleaner code with shortcut imports.
-- 🔄 Dependabot Integration: Automatic updates for secure and up-to-date dependencies.
+- 🔄 Renovate Integration: Automatic updates for secure and up-to-date dependencies.
 - 🔒 Security: Helmet for HTTP header security and CORS setup.
 - 📊 Logging: Efficient logging with pino-http.
 - 🧪 Comprehensive Testing: Robust setup with Vitest and Supertest.
 - 🔑 Code Quality Assurance: Husky and lint-staged for consistent quality.
-- ✅ Unified Code Style: ESLint and Prettier for a consistent coding standard.
+- ✅ Unified Code Style: Biomejs for a consistent coding standard.
 - 📃 API Response Standardization: ServiceResponse class for consistent API responses.
 - 🐳 Docker Support: Ready for containerization and deployment.
 - 📝 Input Validation with Zod: Strongly typed request validation using Zod.
@@ -54,48 +54,6 @@ Developed to streamline backend development, this boilerplate is your solution f
 - Development Mode: `npm run dev`
 - Building: `npm run build`
 - Production Mode: Set `.env` to `NODE_ENV="production"` then `npm run build && npm run start`
-
-## 📁 Project Structure
-
-```
-.
-├── api
-│   ├── healthCheck
-│   │   ├── __tests__
-│   │   │   └── healthCheckRouter.test.ts
-│   │   └── healthCheckRouter.ts
-│   └── user
-│       ├── __tests__
-│       │   ├── userRouter.test.ts
-│       │   └── userService.test.ts
-│       ├── userModel.ts
-│       ├── userRepository.ts
-│       ├── userRouter.ts
-│       └── userService.ts
-├── api-docs
-│   ├── __tests__
-│   │   └── openAPIRouter.test.ts
-│   ├── openAPIDocumentGenerator.ts
-│   ├── openAPIResponseBuilders.ts
-│   └── openAPIRouter.ts
-├── common
-│   ├── __tests__
-│   │   ├── errorHandler.test.ts
-│   │   └── requestLogger.test.ts
-│   ├── middleware
-│   │   ├── errorHandler.ts
-│   │   ├── rateLimiter.ts
-│   │   └── requestLogger.ts
-│   ├── models
-│   │   └── serviceResponse.ts
-│   └── utils
-│       ├── commonValidation.ts
-│       ├── envConfig.ts
-│       └── httpHandlers.ts
-├── index.ts
-└── server.ts
-
-```
 
 ## 🤝 Feedback and Contributions
 

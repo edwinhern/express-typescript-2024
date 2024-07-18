@@ -9,15 +9,12 @@
     "moduleResolution": "Node",
     "outDir": "dist",
     "importsNotUsedAsValues": "remove",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "noPropertyAccessFromIndexSignature": false,
+    "esModuleInterop": true,
     "skipLibCheck": true,
-    "ignoreDeprecations": "5.0",
+    "forceConsistentCasingInFileNames": true,
     "types": ["vitest/globals"]
   },
-  "extends": [],
-  "exclude": ["node_modules"],
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

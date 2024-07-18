@@ -1,5 +1,5 @@
-import { ErrorRequestHandler, RequestHandler } from 'express';
-import { StatusCodes } from 'http-status-codes';
+import type { ErrorRequestHandler, RequestHandler } from "express";
+import { StatusCodes } from "http-status-codes";
 
 const unexpectedRequest: RequestHandler = (_req, res) => {
   res.sendStatus(StatusCodes.NOT_FOUND);

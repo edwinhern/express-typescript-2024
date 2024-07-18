@@ -2,20 +2,22 @@
   "name": "express-typescript-boilerplate",
   "version": "1.0.14",
   "description": "An Express boilerplate backend",
+  "author": "Edwin Hernandez",
+  "repository": "edwinhern/express-typescript-2024",
+  "license": "MIT",
   "main": "index.ts",
   "private": true,
   "scripts": {
     "dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
-    "build": "rimraf dist && tsup",
+    "build": "tsup",
     "start": "node dist/index.js",
     "clean": "rimraf dist coverage",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
-    "format": "prettier --config .prettierrc --write .",
+    "lint": "biome check src/",
+    "lint:fix": "biome check src/ --fix",
+    "format": "biome format src/",
     "test": "vitest run",
     "test:dev": "vitest dev",
     "test:cov": "vitest run --coverage",
-    "release": "semantic-release",
     "prepare": "husky"
   },
   "dependencies": {
@@ -32,28 +34,16 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.2.1",
-    "@commitlint/config-conventional": "^19.1.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^10.0.3",
+    "@biomejs/biome": "1.8.3",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/supertest": "^6.0.2",
     "@types/swagger-ui-express": "^4.1.6",
-    "@typescript-eslint/eslint-plugin": "^7.5.0",
-    "@typescript-eslint/parser": "^7.5.0",
     "@vitest/coverage-v8": "^1.4.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-simple-import-sort": "^12.0.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "pino-pretty": "^11.0.0",
-    "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
-    "semantic-release": "^24.0.0",
     "supertest": "^7.0.0",
     "tsup": "^8.0.2",
     "tsx": "^4.7.2",
@@ -62,10 +52,12 @@
     "vitest": "^1.3.1"
   },
   "lint-staged": {
-    "**/*": "npm run format",
-    "**/*.{js,ts}": "npm run lint:fix"
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,json,jsonc}": ["biome check --apply --no-errors-on-unmatched"]
   },
-  "author": "Edwin Hernandez",
-  "repository": "edwinhern/express-typescript-2024",
-  "license": "ISC"
+  "tsup": {
+    "entry": ["./src"],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true
+  }
 }
