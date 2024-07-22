@@ -38,6 +38,8 @@ Developed to streamline backend development, this boilerplate is your solution f
 
 ## 🛠️ Getting Started
 
+https://github.com/user-attachments/assets/b1698dac-d582-45a0-8d61-31131732b74e
+
 ### Step 1: 🚀 Initial Setup
 
 - Clone the repository: `git clone https://github.com/edwinhern/express-typescript-2024.git`
