@@ -5,7 +5,7 @@ import { userRepository } from "@/api/user/userRepository";
 import { ServiceResponse } from "@/common/models/serviceResponse";
 import { logger } from "@/server";
 
-export class userService {
+export class UserService {
   private userRepository: userRepository;
 
   constructor(repository: userRepository = new userRepository()) {
@@ -47,4 +47,4 @@ export class userService {
   }
 }
 
-export const userServiceInstance = new userService();
+export const userService = new UserService();
