@@ -5,51 +5,62 @@
 [![Code Quality](https://github.com/edwinhern/express-typescript-2024/actions/workflows/code-quality.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/code-quality.yml)
 [![Docker Image CI](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml)
 
+``` code
+Hey There! 🙌 
+🤾 that ⭐️ button if you like this boilerplate. 
+```
+
 ## 🌟 Introduction
 
-Welcome to the Express TypeScript Boilerplate 2024 – a streamlined, efficient, and scalable foundation for building powerful backend services. This boilerplate merges modern tools and practices in Express.js and TypeScript, enhancing productivity, code quality, and performance.
+Welcome to the Express TypeScript Boilerplate 2024 – a streamlined, efficient, and scalable foundation for building powerful backend services with modern tools and practices in Express.js and TypeScript.
 
-## 💡 Motivation and Intentions
+## 💡 Motivation
 
-Developed to streamline backend development, this boilerplate is your solution for:
+This boilerplate aims to:
 
-- ✨ Reducing setup time for new projects.
-- 📊 Ensuring code consistency and quality.
-- ⚡ Facilitating rapid development with cutting-edge tools.
-- 🛡️ Encouraging best practices in security, testing, and performance.
+- ✨ Reduce setup time for new projects
+- 📊 Ensure code consistency and quality
+- ⚡  Facilitate rapid development
+- 🛡️ Encourage best practices in security, testing, and performance
 
 ## 🚀 Features
 
-- 📁 Modular Structure: Organized by feature for easy navigation and scalability.
-- 💨 Faster Execution with tsx: Rapid TypeScript execution with esbuild, complemented by tsc for type checking.
-- 🌐 Stable Node Environment: Latest LTS Node version in .nvmrc.
-- 🔧 Simplified Environment Variables with Envalid: Centralized and easy-to-manage configuration.
-- 🔗 Path Aliases: Cleaner code with shortcut imports.
-- 🔄 Renovate Integration: Automatic updates for secure and up-to-date dependencies.
-- 🔒 Security: Helmet for HTTP header security and CORS setup.
-- 📊 Logging: Efficient logging with pino-http.
-- 🧪 Comprehensive Testing: Robust setup with Vitest and Supertest.
-- 🔑 Code Quality Assurance: Husky and lint-staged for consistent quality.
-- ✅ Unified Code Style: Biomejs for a consistent coding standard.
-- 📃 API Response Standardization: ServiceResponse class for consistent API responses.
-- 🐳 Docker Support: Ready for containerization and deployment.
-- 📝 Input Validation with Zod: Strongly typed request validation using Zod.
-- 🧩 API Spec Generation: Automated OpenAPI specification generation from Zod schemas to ensure up-to-date and accurate API documentation.
+- 📁 Modular Structure: Organized by feature for easy navigation and scalability
+- 💨 Faster Execution with tsx: Rapid TypeScript execution with `tsx` and type checking with `tsc`
+- 🌐 Stable Node Environment: Latest LTS Node version in `.nvmrc`
+- 🔧 Simplified Environment Variables: Managed with Envalid
+- 🔗 Path Aliases: Cleaner code with shortcut imports
+- 🔄 Renovate Integration: Automatic updates for dependencies
+- 🔒 Security: Helmet for HTTP header security and CORS setup
+- 📊 Logging: Efficient logging with `pino-http`
+- 🧪 Comprehensive Testing: Setup with Vitest and Supertest
+- 🔑 Code Quality Assurance: Husky and lint-staged for consistent quality
+- ✅ Unified Code Style: `Biomejs` for consistent coding standards
+- 📃 API Response Standardization: `ServiceResponse` class for consistent API responses
+- 🐳 Docker Support: Ready for containerization and deployment
+- 📝 Input Validation with Zod: Strongly typed request validation using `Zod`
+- 🧩 Swagger UI: Interactive API documentation generated from Zod schemas
 
 ## 🛠️ Getting Started
 
-### Step 1: 🚀 Initial Setup
+### Video Demo
+
+For a visual guide, watch the [video demo](https://github.com/user-attachments/assets/b1698dac-d582-45a0-8d61-31131732b74e) to see the setup and running of the project.
+
+### Step-by-Step Guide
+
+#### Step 1: 🚀 Initial Setup
 
 - Clone the repository: `git clone https://github.com/edwinhern/express-typescript-2024.git`
 - Navigate: `cd express-typescript-2024`
 - Install dependencies: `npm ci`
 
-### Step 2: ⚙️ Environment Configuration
+#### Step 2: ⚙️ Environment Configuration
 
 - Create `.env`: Copy `.env.template` to `.env`
 - Update `.env`: Fill in necessary environment variables
 
-### Step 3: 🏃‍♂️ Running the Project
+#### Step 3: 🏃‍♂️ Running the Project
 
 - Development Mode: `npm run dev`
 - Building: `npm run build`
