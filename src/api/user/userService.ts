@@ -1,14 +1,14 @@
 import { StatusCodes } from "http-status-codes";
 
 import type { User } from "@/api/user/userModel";
-import { userRepository } from "@/api/user/userRepository";
+import { UserRepository } from "@/api/user/userRepository";
 import { ServiceResponse } from "@/common/models/serviceResponse";
 import { logger } from "@/server";
 
 export class UserService {
-  private userRepository: userRepository;
+  private userRepository: UserRepository;
 
-  constructor(repository: userRepository = new userRepository()) {
+  constructor(repository: UserRepository = new UserRepository()) {
     this.userRepository = repository;
   }
 
