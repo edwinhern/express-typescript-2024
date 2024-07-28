@@ -19,7 +19,7 @@ export const users: User[] = [
   },
 ];
 
-export class userRepository {
+export class UserRepository {
   async findAllAsync(): Promise<User[]> {
     return users;
   }

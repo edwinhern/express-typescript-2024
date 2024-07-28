@@ -2,23 +2,37 @@ import { StatusCodes } from "http-status-codes";
 import type { Mock } from "vitest";
 
 import type { User } from "@/api/user/userModel";
-import { userRepository } from "@/api/user/userRepository";
-import { userService } from "@/api/user/userService";
+import { UserRepository } from "@/api/user/userRepository";
+import { UserService } from "@/api/user/userService";
 
 vi.mock("@/api/user/userRepository");
 
 describe("userService", () => {
-  let userServiceInstance: userService;
-  let userRepositoryInstance: userRepository;
+  let userServiceInstance: UserService;
+  let userRepositoryInstance: UserRepository;
 
   const mockUsers: User[] = [
-    { id: 1, name: "Alice", email: "alice@example.com", age: 42, createdAt: new Date(), updatedAt: new Date() },
-    { id: 2, name: "Bob", email: "bob@example.com", age: 21, createdAt: new Date(), updatedAt: new Date() },
+    {
+      id: 1,
+      name: "Alice",
+      email: "alice@example.com",
+      age: 42,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      id: 2,
+      name: "Bob",
+      email: "bob@example.com",
+      age: 21,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
   ];
 
   beforeEach(() => {
-    userRepositoryInstance = new userRepository();
-    userServiceInstance = new userService(userRepositoryInstance);
+    userRepositoryInstance = new UserRepository();
+    userServiceInstance = new UserService(userRepositoryInstance);
   });
 
   describe("findAll", () => {
