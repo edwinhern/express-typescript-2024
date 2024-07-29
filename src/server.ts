@@ -18,9 +18,7 @@ const app: Express = express();
 app.set("trust proxy", true);
 
 // Middlewares
-// Parse JSON bodies (for example, from AJAX calls)
 app.use(express.json());
-// Parse URL-encoded bodies (for example, from HTML form submissions)
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
 app.use(helmet());
