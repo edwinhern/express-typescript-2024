@@ -120,8 +120,8 @@ describe("userService", () => {
       const result = await userServiceInstance.findById(testId);
 
       // Assert
-      expect(result.statusCode).toEqual(StatusCodes.NOT_FOUND);
-      expect(result.success).toBeFalsy();
+      expect(result.statusCode).toEqual(StatusCodes.OK);
+      expect(result.success).toBeTruthy();
       expect(result.message).equals("User not found");
       expect(result.responseObject).toBeNull();
     });

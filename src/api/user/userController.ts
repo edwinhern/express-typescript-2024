@@ -1,19 +1,27 @@
-import type { Request, RequestHandler, Response } from "express";
+import { Controller, Get, Path, Route, SuccessResponse, Tags } from "@tsoa/runtime";
+import { StatusCodes } from "http-status-codes";
 
-import { userService } from "@/api/user/userService";
-import { handleServiceResponse } from "@/common/utils/httpHandlers";
+import { UserService } from "@/api/user/userService";
 
-class UserController {
-  public getUsers: RequestHandler = async (_req: Request, res: Response) => {
-    const serviceResponse = await userService.findAll();
-    return handleServiceResponse(serviceResponse, res);
-  };
+@Route("user")
+@Tags("Users")
+export class UserController extends Controller {
+  private userService: UserService;
 
-  public getUser: RequestHandler = async (req: Request, res: Response) => {
-    const id = Number.parseInt(req.params.id as string, 10);
-    const serviceResponse = await userService.findById(id);
-    return handleServiceResponse(serviceResponse, res);
-  };
+  constructor(userService = new UserService()) {
+    super();
+    this.userService = userService;
+  }
+
+  @Get()
+  @SuccessResponse(StatusCodes.OK, "Users found")
+  public async getUsers() {
+    return this.userService.findAll();
+  }
+
+  @Get("{userId}")
+  @SuccessResponse(StatusCodes.OK, "Users found")
+  public async getUser(@Path() userId: number) {
+    return this.userService.findById(userId);
+  }
 }
-
-export const userController = new UserController();

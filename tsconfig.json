@@ -1,19 +1,43 @@
 {
   "compilerOptions": {
+    /* Basic Options */
+    "incremental": true,
     "target": "ESNext",
     "module": "CommonJS",
+    "outDir": "dist",
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    /* Additional Checks */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Module Resolution Options */
+    "moduleResolution": "Node",
     "baseUrl": ".",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    /* Experimental Options */
+    "experimentalDecorators": true,
+
+    /* Advanced Options */
+    "types": ["vitest/globals"],
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "remove",
     "paths": {
       "@/*": ["src/*"]
-    },
-    "moduleResolution": "Node",
-    "outDir": "dist",
-    "importsNotUsedAsValues": "remove",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": ["vitest/globals"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

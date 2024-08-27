@@ -1,0 +1,201 @@
+{
+  "openapi": "3.0.0",
+  "components": {
+    "examples": {},
+    "headers": {},
+    "parameters": {},
+    "requestBodies": {},
+    "responses": {},
+    "schemas": {
+      "IHealthCheckResponse": {
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "responseObject": {
+            "type": "number",
+            "enum": [null],
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": ["success", "message", "responseObject", "statusCode"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "User": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "age": {
+            "type": "number",
+            "format": "double"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": ["id", "name", "email", "age", "createdAt", "updatedAt"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "IUsersResponse": {
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "responseObject": {
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": ["success", "message", "responseObject", "statusCode"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "IUserResponse": {
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "responseObject": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              }
+            ],
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": ["success", "message", "responseObject", "statusCode"],
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {}
+  },
+  "info": {
+    "title": "express-typescript-boilerplate",
+    "version": "1.0.14",
+    "description": "An Express boilerplate backend",
+    "license": {
+      "name": "MIT"
+    },
+    "contact": {
+      "name": "Edwin Hernandez"
+    }
+  },
+  "paths": {
+    "/health-check": {
+      "get": {
+        "operationId": "GetHealthCheck",
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IHealthCheckResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Health Check"],
+        "security": [],
+        "parameters": []
+      }
+    },
+    "/user": {
+      "get": {
+        "operationId": "GetUsers",
+        "responses": {
+          "200": {
+            "description": "Users found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IUsersResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Users"],
+        "security": [],
+        "parameters": []
+      }
+    },
+    "/user/{userId}": {
+      "get": {
+        "operationId": "GetUser",
+        "responses": {
+          "200": {
+            "description": "Users found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IUserResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Users"],
+        "security": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ]
+}

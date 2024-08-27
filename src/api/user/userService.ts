@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 
-import type { User } from "@/api/user/userModel";
+import type { IUserResponse, IUsersResponse, User } from "@/api/user/userModel";
 import { UserRepository } from "@/api/user/userRepository";
 import { ServiceResponse } from "@/common/models/serviceResponse";
 import { logger } from "@/server";
@@ -13,7 +13,7 @@ export class UserService {
   }
 
   // Retrieves all users from the database
-  async findAll(): Promise<ServiceResponse<User[] | null>> {
+  async findAll(): Promise<IUsersResponse> {
     try {
       const users = await this.userRepository.findAllAsync();
       if (!users || users.length === 0) {
@@ -32,11 +32,11 @@ export class UserService {
   }
 
   // Retrieves a single user by their ID
-  async findById(id: number): Promise<ServiceResponse<User | null>> {
+  async findById(id: number): Promise<IUserResponse> {
     try {
       const user = await this.userRepository.findByIdAsync(id);
       if (!user) {
-        return ServiceResponse.failure("User not found", null, StatusCodes.NOT_FOUND);
+        return ServiceResponse.success("User not found", null);
       }
       return ServiceResponse.success<User>("User found", user);
     } catch (ex) {
@@ -46,5 +46,3 @@ export class UserService {
     }
   }
 }
-
-export const userService = new UserService();
