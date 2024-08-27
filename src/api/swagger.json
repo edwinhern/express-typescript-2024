@@ -167,7 +167,7 @@
         "operationId": "GetUser",
         "responses": {
           "200": {
-            "description": "Users found",
+            "description": "User found",
             "content": {
               "application/json": {
                 "schema": {

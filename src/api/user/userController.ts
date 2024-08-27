@@ -20,7 +20,7 @@ export class UserController extends Controller {
   }
 
   @Get("{userId}")
-  @SuccessResponse(StatusCodes.OK, "Users found")
+  @SuccessResponse(StatusCodes.OK, "User found")
   public async getUser(@Path() userId: number) {
     return this.userService.findById(userId);
   }
