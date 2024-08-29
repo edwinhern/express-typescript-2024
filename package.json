@@ -55,7 +55,6 @@
     "sourcemap": false,
     "clean": true,
     "minify": true,
-    "treeshake": true,
     "format": ["esm"],
     "skipNodeModulesBundle": true
   }
