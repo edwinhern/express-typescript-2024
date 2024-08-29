@@ -3,7 +3,7 @@
     /* Basic Options */
     "incremental": true,
     "target": "ESNext",
-    "module": "CommonJS",
+    "module": "ES2022",
     "outDir": "dist",
 
     /* Strict Type-Checking Options */

@@ -4,11 +4,12 @@ import helmet from "helmet";
 import { pino } from "pino";
 import swaggerUi from "swagger-ui-express";
 
-import { RegisterRoutes } from "@/api/routes";
+import { RegisterRoutes } from "@/api/generated/routes";
 import { errorHandlers, notFoundHandler } from "@/common/middleware/errorHandler";
 // import rateLimiter from "@/common/middleware/rateLimiter";
 import requestLogger from "@/common/middleware/requestLogger";
 import { env } from "@/common/utils/envConfig";
+import buildApiSpecAndRoutes from "@/common/utils/tsoa-generator";
 
 const logger = pino({ name: "server start" });
 const app: Express = express();
@@ -26,12 +27,14 @@ app.use(helmet());
 // Request logging
 app.use(requestLogger);
 
+if (env.isDevelopment) await buildApiSpecAndRoutes();
+
 // Routes
 RegisterRoutes(app);
 
 // Swagger UI
 app.use("/", swaggerUi.serve, async (_req: Request, res: Response) => {
-  return res.send(swaggerUi.generateHTML(await import("./api/swagger.json")));
+  return res.send(swaggerUi.generateHTML(await import("./api/generated/swagger.json")));
 });
 
 // Not found handler

@@ -1,15 +1,20 @@
 {
   "entryFile": "src/index.ts",
-  "noImplicitAdditionalProperties": "throw-on-extras",
+  "noImplicitAdditionalProperties": "silently-remove-extras",
   "controllerPathGlobs": ["src/**/*Controller.ts"],
   "spec": {
-    "outputDirectory": "src/api/",
+    "basePath": "/api/",
+    "outputDirectory": "src/api/generated/",
     "specVersion": 3
   },
   "routes": {
-    "routesDir": "src/api/"
+    "basePath": "/api/",
+    "routesDir": "src/api/generated/",
+    "middleware": "express",
+    "esm": true
   },
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     }

@@ -7,9 +7,10 @@
   "license": "MIT",
   "main": "src/index.ts",
   "private": true,
+  "type": "module",
   "scripts": {
-    "debug": "concurrently \"tsoa spec-and-routes\" \"npm:dev\"",
-    "dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
+    "dev": "tsx watch --ignore 'src/api/generated/**' --clear-screen=false src/index.ts | pino-pretty",
+    "build-api": "tsx src/common/utils/tsoa-generator.ts",
     "build": "tsoa spec-and-routes && tsup",
     "start": "node dist/index.js",
     "lint": "biome check src/",
@@ -36,7 +37,6 @@
     "@types/express": "^4.17.21",
     "@types/supertest": "^6.0.2",
     "@types/swagger-ui-express": "^4.1.6",
-    "concurrently": "^8.2.2",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "pino-pretty": "^11.0.0",
@@ -52,8 +52,11 @@
   },
   "tsup": {
     "entry": ["src", "!src/**/__tests__/**", "!src/**/*.test.*"],
-    "splitting": false,
-    "sourcemap": true,
-    "clean": true
+    "sourcemap": false,
+    "clean": true,
+    "minify": true,
+    "treeshake": true,
+    "format": ["esm"],
+    "skipNodeModulesBundle": true
   }
 }

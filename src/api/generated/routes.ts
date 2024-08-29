@@ -4,9 +4,9 @@
 import { ExpressTemplateService, type TsoaRoute, fetchMiddlewares } from "@tsoa/runtime";
 import type { Request as ExRequest, Response as ExResponse, RequestHandler, Router } from "express";
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { HealthCheckController } from "./healthCheck/healthCheckController";
+import { HealthCheckController } from "./../healthCheck/healthCheckController.js";
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { UserController } from "./user/userController";
+import { UserController } from "./../user/userController.js";
 
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
@@ -70,7 +70,7 @@ const models: TsoaRoute.Models = {
   // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
 const templateService = new ExpressTemplateService(models, {
-  noImplicitAdditionalProperties: "throw-on-extras",
+  noImplicitAdditionalProperties: "silently-remove-extras",
   bodyCoercion: true,
 });
 
@@ -83,7 +83,7 @@ export function RegisterRoutes(app: Router) {
   // ###########################################################################################################
 
   app.get(
-    "/health-check",
+    "/api/health-check",
     ...fetchMiddlewares<RequestHandler>(HealthCheckController),
     ...fetchMiddlewares<RequestHandler>(HealthCheckController.prototype.getHealthCheck),
 
@@ -113,7 +113,7 @@ export function RegisterRoutes(app: Router) {
   );
   // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
   app.get(
-    "/user",
+    "/api/user",
     ...fetchMiddlewares<RequestHandler>(UserController),
     ...fetchMiddlewares<RequestHandler>(UserController.prototype.getUsers),
 
@@ -143,7 +143,7 @@ export function RegisterRoutes(app: Router) {
   );
   // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
   app.get(
-    "/user/:userId",
+    "/api/user/:userId",
     ...fetchMiddlewares<RequestHandler>(UserController),
     ...fetchMiddlewares<RequestHandler>(UserController.prototype.getUser),
 
