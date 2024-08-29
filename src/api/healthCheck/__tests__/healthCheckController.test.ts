@@ -6,7 +6,7 @@ import { app } from "@/server";
 
 describe("Health Check API endpoints", () => {
   it("GET / - success", async () => {
-    const response = await request(app).get("/health-check");
+    const response = await request(app).get("/api/health-check");
     const result: IHealthCheckResponse = response.body;
 
     expect(response.statusCode).toEqual(StatusCodes.OK);
