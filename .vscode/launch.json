@@ -9,6 +9,17 @@
   "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"],
   "configurations": [
     {
+      "name": "Debug in dev mode",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"]
+    },
+    {
       "command": "npm start",
       "name": "Run npm start",
       "request": "launch",
