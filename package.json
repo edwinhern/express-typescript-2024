@@ -27,6 +27,7 @@
     "express-rate-limit": "^7.2.0",
     "helmet": "^8.0.0",
     "http-status-codes": "^2.3.0",
+    "pino": "^9.4.0",
     "pino-http": "^10.0.0",
     "swagger-ui-express": "^5.0.0",
     "zod": "^3.22.4"
@@ -56,5 +57,6 @@
     "splitting": false,
     "sourcemap": true,
     "clean": true
-  }
+  },
+  "packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c"
 }
