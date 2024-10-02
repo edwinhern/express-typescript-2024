@@ -1,18 +1,15 @@
 {
-  "name": "tsx",
-  "type": "node",
-  "request": "launch",
-  "program": "${workspaceFolder}/src/index.ts",
-  "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/tsx",
-  "console": "integratedTerminal",
-  "internalConsoleOptions": "neverOpen",
-  "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"],
+  "version": "0.2.0",
   "configurations": [
     {
-      "command": "npm start",
-      "name": "Run npm start",
+      "name": "Run in Development Mode",
+      "type": "node",
       "request": "launch",
-      "type": "node-terminal"
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"]
     }
   ]
 }
