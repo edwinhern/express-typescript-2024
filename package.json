@@ -27,6 +27,7 @@
     "express-rate-limit": "^7.2.0",
     "helmet": "^8.0.0",
     "http-status-codes": "^2.3.0",
+    "pino": "^9.4.0",
     "pino-http": "^10.0.0",
     "swagger-ui-express": "^5.0.0",
     "zod": "^3.22.4"
