@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import url from "node:url";
 import { logger } from "@/server";
-import { generateRoutes, generateSpec } from "@tsoa/cli";
+import { generateRoutes, generateSpec } from "tsoa";
 import type { Config, ExtendedRoutesConfig, ExtendedSpecConfig } from "tsoa";
 import ts from "typescript";
 
