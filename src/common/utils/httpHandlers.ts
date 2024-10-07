@@ -2,10 +2,15 @@ import type { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import type { ZodError, ZodSchema } from "zod";
 
+import type { HtmlServiceResponse } from "@/common/models/htmlServiceResponse";
 import { ServiceResponse } from "@/common/models/serviceResponse";
 
 export const handleServiceResponse = (serviceResponse: ServiceResponse<any>, response: Response) => {
   return response.status(serviceResponse.statusCode).send(serviceResponse);
+};
+
+export const handleHtmlServiceResponse = (serviceResponse: HtmlServiceResponse, response: Response) => {
+  return response.status(serviceResponse.statusCode).send(serviceResponse.html);
 };
 
 export const validateRequest = (schema: ZodSchema) => (req: Request, res: Response, next: NextFunction) => {

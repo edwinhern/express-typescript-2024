@@ -3,8 +3,8 @@ import request from "supertest";
 
 import type { User } from "@/api/user/userModel";
 import { users } from "@/api/user/userRepository";
+import { app } from "@/bin/server";
 import type { ServiceResponse } from "@/common/models/serviceResponse";
-import { app } from "@/server";
 
 describe("User API Endpoints", () => {
   describe("GET /users", () => {
