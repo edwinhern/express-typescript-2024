@@ -2,10 +2,10 @@
   "name": "express-typescript-boilerplate",
   "version": "1.0.14",
   "description": "An Express boilerplate backend",
-  "author": "Edwin Hernandez",
-  "repository": "edwinhern/express-typescript-2024",
+  "author": "Alejandro Ruiz",
+  "repository": "alex-ruiz/express-typescript-2024",
   "license": "MIT",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "private": true,
   "scripts": {
     "dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
