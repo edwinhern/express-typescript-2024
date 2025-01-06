@@ -40,7 +40,7 @@
     "@types/swagger-ui-express": "^4.1.6",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "pino-pretty": "^11.0.0",
+    "pino-pretty": "^13.0.0",
     "rimraf": "^6.0.0",
     "supertest": "^7.0.0",
     "tsup": "^8.0.2",
