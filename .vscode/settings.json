@@ -1,15 +1,14 @@
 {
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "biomejs.biome",
-  "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit",
-    "source.organizeImports.biome": "explicit",
-    "source.fixAll": "explicit"
-  },
-  "json.schemas": [
-    {
-      "url": "https://cdn.jsdelivr.net/npm/tsup/schema.json",
-      "fileMatch": ["package.json", "tsup.config.json"]
-    }
-  ]
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit",
+		"source.fixAll.biome": "explicit",
+		"source.organizeImports.biome": "explicit"
+	},
+	"[javascript][typescript][json][jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[github-actions-workflow][markdown][xml][yaml]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}
 }
