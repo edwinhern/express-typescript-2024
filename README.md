@@ -1,13 +1,8 @@
 # 🚀 Express TypeScript Boilerplate 2024
 
-[![Build](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml)
-[![Test](https://github.com/edwinhern/express-typescript-2024/actions/workflows/test.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/test.yml)
-[![Code Quality](https://github.com/edwinhern/express-typescript-2024/actions/workflows/code-quality.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/code-quality.yml)
-[![Docker Image CI](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml)
-
-``` code
-Hey There! 🙌 
-🤾 that ⭐️ button if you like this boilerplate. 
+```code
+Hey There! 🙌
+🤾 that ⭐️ button if you like this boilerplate.
 ```
 
 ## 🌟 Introduction
@@ -20,7 +15,7 @@ This boilerplate aims to:
 
 - ✨ Reduce setup time for new projects
 - 📊 Ensure code consistency and quality
-- ⚡  Facilitate rapid development
+- ⚡ Facilitate rapid development
 - 🛡️ Encourage best practices in security, testing, and performance
 
 ## 🚀 Features
@@ -74,7 +69,7 @@ We'd love to hear your feedback and suggestions for further improvements. Feel f
 
 ## 📁 Folder Structure
 
-```code  
+```code
 ├── Dockerfile
 ├── README.md
 ├── biome.json

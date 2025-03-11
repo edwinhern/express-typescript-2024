@@ -1,0 +1,35 @@
+name: "Setup pnpm"
+description: "Sets up pnpm with caching"
+
+runs:
+  using: composite
+  steps:
+    - name: Extract pnpm version from .tool-versions
+      id: pnpm-version
+      shell: bash
+      run: |
+        PNPM_VERSION=$(grep 'pnpm' .tool-versions | awk '{print $2}')
+        echo "Using pnpm version: $PNPM_VERSION"
+        echo "version=$PNPM_VERSION" >> $GITHUB_OUTPUT
+
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: ${{ steps.pnpm-version.outputs.version }}
+
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - name: Restore pnpm cache
+      uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install
