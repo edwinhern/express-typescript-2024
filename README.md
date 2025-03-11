@@ -1,13 +1,10 @@
 # 🚀 Express TypeScript Boilerplate 2024
 
-[![Build](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/build.yml)
-[![Test](https://github.com/edwinhern/express-typescript-2024/actions/workflows/test.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/test.yml)
-[![Code Quality](https://github.com/edwinhern/express-typescript-2024/actions/workflows/code-quality.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/code-quality.yml)
-[![Docker Image CI](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml/badge.svg)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/docker-image.yml)
+[![CI](https://github.com/edwinhern/express-typescript-2024/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/ci.yml)
 
-``` code
-Hey There! 🙌 
-🤾 that ⭐️ button if you like this boilerplate. 
+```code
+Hey There! 🙌
+🤾 that ⭐️ button if you like this boilerplate.
 ```
 
 ## 🌟 Introduction
@@ -20,7 +17,7 @@ This boilerplate aims to:
 
 - ✨ Reduce setup time for new projects
 - 📊 Ensure code consistency and quality
-- ⚡  Facilitate rapid development
+- ⚡ Facilitate rapid development
 - 🛡️ Encourage best practices in security, testing, and performance
 
 ## 🚀 Features
@@ -34,7 +31,6 @@ This boilerplate aims to:
 - 🔒 Security: Helmet for HTTP header security and CORS setup
 - 📊 Logging: Efficient logging with `pino-http`
 - 🧪 Comprehensive Testing: Setup with Vitest and Supertest
-- 🔑 Code Quality Assurance: Husky and lint-staged for consistent quality
 - ✅ Unified Code Style: `Biomejs` for consistent coding standards
 - 📃 API Response Standardization: `ServiceResponse` class for consistent API responses
 - 🐳 Docker Support: Ready for containerization and deployment
@@ -71,3 +67,54 @@ For a visual guide, watch the [video demo](https://github.com/user-attachments/a
 We'd love to hear your feedback and suggestions for further improvements. Feel free to contribute and join us in making backend development cleaner and faster!
 
 🎉 Happy coding!
+
+## 📁 Folder Structure
+
+```code
+├── Dockerfile
+├── README.md
+├── biome.json
+├── package-lock.json
+├── package.json
+├── src
+│   ├── api
+│   │   ├── healthCheck
+│   │   │   ├── __tests__
+│   │   │   │   └── healthCheckRouter.test.ts
+│   │   │   └── healthCheckRouter.ts
+│   │   └── user
+│   │       ├── __tests__
+│   │       │   ├── userRouter.test.ts
+│   │       │   └── userService.test.ts
+│   │       ├── userController.ts
+│   │       ├── userModel.ts
+│   │       ├── userRepository.ts
+│   │       ├── userRouter.ts
+│   │       └── userService.ts
+│   ├── api-docs
+│   │   ├── __tests__
+│   │   │   └── openAPIRouter.test.ts
+│   │   ├── openAPIDocumentGenerator.ts
+│   │   ├── openAPIResponseBuilders.ts
+│   │   └── openAPIRouter.ts
+│   ├── common
+│   │   ├── __tests__
+│   │   │   ├── errorHandler.test.ts
+│   │   │   └── requestLogger.test.ts
+│   │   ├── middleware
+│   │   │   ├── errorHandler.ts
+│   │   │   ├── rateLimiter.ts
+│   │   │   └── requestLogger.ts
+│   │   ├── models
+│   │   │   └── serviceResponse.ts
+│   │   └── utils
+│   │       ├── commonValidation.ts
+│   │       ├── envConfig.ts
+│   │       └── httpHandlers.ts
+│   ├── index.ts
+│   └── server.ts
+├── tsconfig.json
+└── vite.config.mts
+
+14 directories, 31 files
+```

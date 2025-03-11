@@ -1,61 +1,57 @@
 {
-  "name": "express-typescript-boilerplate",
-  "version": "1.0.14",
-  "description": "An Express boilerplate backend",
-  "author": "Edwin Hernandez",
-  "repository": "edwinhern/express-typescript-2024",
-  "license": "MIT",
-  "main": "index.ts",
-  "private": true,
-  "scripts": {
-    "dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
-    "build": "tsup",
-    "start": "node dist/index.js",
-    "clean": "rimraf dist coverage",
-    "lint": "biome check src/",
-    "lint:fix": "biome check src/ --fix",
-    "format": "biome format src/",
-    "test": "vitest run",
-    "prepare": "husky"
-  },
-  "dependencies": {
-    "@asteasolutions/zod-to-openapi": "^7.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "envalid": "^8.0.0",
-    "express": "^4.19.2",
-    "express-rate-limit": "^7.2.0",
-    "helmet": "^8.0.0",
-    "http-status-codes": "^2.3.0",
-    "pino": "^9.4.0",
-    "pino-http": "^10.0.0",
-    "swagger-ui-express": "^5.0.0",
-    "zod": "^3.22.4"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
-    "@types/supertest": "^6.0.2",
-    "@types/swagger-ui-express": "^4.1.6",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
-    "pino-pretty": "^13.0.0",
-    "rimraf": "^6.0.0",
-    "supertest": "^7.0.0",
-    "tsup": "^8.0.2",
-    "tsx": "^4.7.2",
-    "typescript": "^5.4.4",
-    "vite-tsconfig-paths": "^5.0.0",
-    "vitest": "^3.0.0"
-  },
-  "lint-staged": {
-    "*.{js,ts,cjs,mjs,d.cts,d.mts,json,jsonc}": ["biome check --apply --no-errors-on-unmatched"]
-  },
-  "tsup": {
-    "entry": ["src", "!src/**/__tests__/**", "!src/**/*.test.*"],
-    "splitting": false,
-    "sourcemap": true,
-    "clean": true
-  }
+	"name": "express-typescript-boilerplate",
+	"version": "1.0.14",
+	"description": "An Express boilerplate backend",
+	"author": "Edwin Hernandez",
+	"repository": "edwinhern/express-typescript-2024",
+	"license": "MIT",
+	"main": "index.ts",
+	"private": true,
+	"scripts": {
+		"build": "tsup",
+		"start:dev": "tsx watch --clear-screen=false src/index.ts | pino-pretty",
+		"start:prod": "node dist/index.js",
+		"lint": "biome lint",
+		"lint:fix": "biome lint --fix",
+		"format": "biome format --write",
+		"test": "vitest run",
+		"test:cov": "vitest run --coverage",
+		"check": "pnpm lint && pnpm format && pnpm build && pnpm test"
+	},
+	"dependencies": {
+		"@asteasolutions/zod-to-openapi": "^7.0.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.4.5",
+		"envalid": "^8.0.0",
+		"express": "^4.19.2",
+		"express-rate-limit": "^7.2.0",
+		"helmet": "^8.0.0",
+		"http-status-codes": "^2.3.0",
+		"pino": "^9.4.0",
+		"pino-http": "^10.0.0",
+		"swagger-ui-express": "^5.0.0",
+		"zod": "^3.22.4"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/cors": "^2.8.17",
+		"@types/express": "^4.17.21",
+		"@types/supertest": "^6.0.2",
+		"@types/swagger-ui-express": "^4.1.6",
+		"@vitest/coverage-v8": "3.0.8",
+		"pino-pretty": "^13.0.0",
+		"supertest": "^7.0.0",
+		"tsup": "^8.0.2",
+		"tsx": "^4.7.2",
+		"typescript": "^5.4.4",
+		"vite-tsconfig-paths": "^5.0.0",
+		"vitest": "^3.0.0"
+	},
+	"tsup": {
+		"entry": ["src", "!src/**/__tests__/**", "!src/**/*.test.*"],
+		"splitting": false,
+		"sourcemap": true,
+		"clean": true
+	},
+	"packageManager": "pnpm@10.6.2"
 }
