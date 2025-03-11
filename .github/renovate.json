@@ -28,12 +28,6 @@
 			"automerge": true
 		},
 		{
-			"matchPackageNames": ["@commitlint/cli", "@commitlint/config-conventional"],
-			"groupName": "commitlint",
-			"groupSlug": "commitlint",
-			"automerge": true
-		},
-		{
 			"matchPackageNames": ["typescript", "/^@types//", "/^ts-/"],
 			"groupName": "TypeScript and type definitions",
 			"groupSlug": "typescript",

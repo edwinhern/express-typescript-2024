@@ -29,7 +29,6 @@ This boilerplate aims to:
 - 🔒 Security: Helmet for HTTP header security and CORS setup
 - 📊 Logging: Efficient logging with `pino-http`
 - 🧪 Comprehensive Testing: Setup with Vitest and Supertest
-- 🔑 Code Quality Assurance: Husky and lint-staged for consistent quality
 - ✅ Unified Code Style: `Biomejs` for consistent coding standards
 - 📃 API Response Standardization: `ServiceResponse` class for consistent API responses
 - 🐳 Docker Support: Ready for containerization and deployment
