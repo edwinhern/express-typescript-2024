@@ -1,5 +1,7 @@
 # 🚀 Express TypeScript Boilerplate 2024
 
+[![CI](https://github.com/edwinhern/express-typescript-2024/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/edwinhern/express-typescript-2024/actions/workflows/ci.yml)
+
 ```code
 Hey There! 🙌
 🤾 that ⭐️ button if you like this boilerplate.
