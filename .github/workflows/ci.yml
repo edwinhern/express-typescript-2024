@@ -105,16 +105,6 @@ jobs:
           echo "# 📋 CI Workflow Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          # Status overview table
-          echo "## 📊 Status Overview" >> $GITHUB_STEP_SUMMARY
-          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
-          echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Setup** | ${{ needs.setup.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Code Quality** | ${{ needs.quality.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Build** | ${{ needs.build.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Test** | ${{ needs.test.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Docker** | ${{ needs.docker.result == 'success' && '✅ Passed' || (needs.docker.result == 'skipped' && '⏩ Skipped' || '❌ Failed') }} |" >> $GITHUB_STEP_SUMMARY
-
           # Build info
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "## 🔨 Build Information" >> $GITHUB_STEP_SUMMARY
