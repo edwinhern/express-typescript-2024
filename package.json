@@ -25,7 +25,7 @@
 		"envalid": "8.0.0",
 		"express": "4.21.2",
 		"express-rate-limit": "7.5.0",
-		"helmet": "8.0.0",
+		"helmet": "8.1.0",
 		"http-status-codes": "2.3.0",
 		"pino": "9.6.0",
 		"pino-http": "10.4.0",
@@ -53,5 +53,5 @@
 		"sourcemap": true,
 		"clean": true
 	},
-	"packageManager": "pnpm@10.6.3"
+	"packageManager": "pnpm@10.6.4"
 }
